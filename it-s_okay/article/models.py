@@ -28,3 +28,14 @@ class Article(models.Model):
     
     def __str__(self) -> str:
         return self.title
+
+class Comment(models.Model):
+    body = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.body[:10]
+
+    
