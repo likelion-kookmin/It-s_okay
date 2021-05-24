@@ -18,6 +18,7 @@ from django.core.exceptions import ImproperlyConfigured
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+<<<<<<< HEAD
 secret_file = os.path.join(BASE_DIR, "secrets.json")  # secrets.json 파일 위치를 명시
 
 with open(secret_file) as f:
@@ -35,11 +36,17 @@ def get_secret(setting, secrets=secret_text):
         raise ImproperlyConfigured(error_msg) from KeyError(error_msg)
 
 
+=======
+>>>>>>> ec3078b2b188f34b99a6210a55c8c7ba3bc40d5c
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+<<<<<<< HEAD
 SECRET_KEY = get_secret("SECRET_KEY")
+=======
+SECRET_KEY = 'fsdfsdfdsfsdfsd'
+>>>>>>> ec3078b2b188f34b99a6210a55c8c7ba3bc40d5c
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -56,8 +63,17 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+<<<<<<< HEAD
     "main",
     "user",
+=======
+<<<<<<<< HEAD:it_s_okay/config/settings.py
+    "main",
+    "user.apps.UserConfig",
+========
+    "article",
+>>>>>>>> ec3078b2b188f34b99a6210a55c8c7ba3bc40d5c:it-s_okay/config/settings.py
+>>>>>>> ec3078b2b188f34b99a6210a55c8c7ba3bc40d5c
 ]
 
 MIDDLEWARE = [
@@ -77,7 +93,11 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
+<<<<<<< HEAD
         "DIRS": [TEMPLATE_DIR],  # 템플릿 경로 추가
+=======
+        "DIRS": [os.path.join(BASE_DIR, 'templates')],  # 템플릿 경로 추가
+>>>>>>> ec3078b2b188f34b99a6210a55c8c7ba3bc40d5c
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -141,3 +161,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = "/static/"
+<<<<<<< HEAD
+=======
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "templates/static"),
+]
+>>>>>>> ec3078b2b188f34b99a6210a55c8c7ba3bc40d5c

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        {% load static %}
+
+        <!-- BOOTSTRAP LINK -->
+    
+        <!-- DEFUALT CSS LINK -->
+        <link rel="stylesheet" type="text/css" href="{% static "base.css" %}">
+    </head>
+<body>
+  	<div class="navbar">
+    <!-- 모든 페이지에 공통으로 들어갈 요소 -->
+  	</div>
+    {% block content %} 
+    <!-- base.html을 상속한 템플릿에서 구현해야 하는 영역  -->
+    {% endblock %}
+</body>
+</html>
