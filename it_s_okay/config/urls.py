@@ -7,4 +7,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.index),
     path("main/", include(main.urls)),
+    path("board/", include('article.urls'),
 ]
