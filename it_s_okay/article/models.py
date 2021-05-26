@@ -1,17 +1,15 @@
 from django.db import models
-from django.db.models.fields import CharField, IntegerField
+from category.models import Large_category, Medium_category, Small_category
 
-class Article(models.Model): 
-    STATE = (
-        ('ing','모집중'),
-        ('complete', '모집완료')
-    )
+
+class Article(models.Model):
+    STATE = (("ing", "모집중"), ("complete", "모집완료"))
     AGE_STATE = (
-        ('ten','10대'),
-        ('twenty', '20대'),
-        ('third', '30대'),
-        ('forty', '40대'),
-        ('fifty', '50대 이상'),
+        ("ten", "10대"),
+        ("twenty", "20대"),
+        ("third", "30대"),
+        ("forty", "40대"),
+        ("fifty", "50대 이상"),
     )
     age = models.CharField(max_length=20, choices=AGE_STATE)
     area = models.CharField(max_length=20)
@@ -21,10 +19,11 @@ class Article(models.Model):
     meeting_time = models.DateTimeField()
     headcount = models.IntegerField()
     state = models.CharField(max_length=20, choices=STATE)
+    large_category = models.ForeignKey(Large_category, on_delete=models.SET_NULL, null=True)
+    edium_category = models.ForeignKey(Medium_category, on_delete=models.SET_NULL, null=True)
+    small_category = models.ForeignKey(Small_category, on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    # TODO : add sort , anonymous
-    
     def __str__(self) -> str:
         return self.title
