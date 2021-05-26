@@ -1,0 +1,53 @@
+
+{% extends 'main/base.html' %}
+{% block content %}
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">쿨괜</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">글 목록</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">자유 게시판</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">비밀 게시판</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown link
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <!-- 텍스트 영역 -->
+    <div class="text-area">
+        <p>
+            <div class="volume"><p class='FL'>쿨해도<br></p> <div class ='FL'>&nbsp;&nbsp;괜찮아<br></div><div class="hanbun">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;한번 보고 안 볼 사이니까...</div></div>
+            <!-- <div class="title">한번 보고 안 볼 사이니까...<div class="line"></div><br> never<br> get old</div> -->
+        </p>
+    </div>
+    <div id="circle-wrapper">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+    <div class='footer'>
+        asdasdasdad
+    </div>
+    
+</div>
+{% endblock %}
