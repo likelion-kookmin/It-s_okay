@@ -8,9 +8,19 @@ body{
     font-size: 11px;
     line-height: 1.4;
     font-weight: 500;
+    height: 100vh;
+    width: 100vw;
     /* 스크롤 제거 */
     overflow-x: hidden;
     overflow-y: hidden;
+}
+
+.content{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    /* padding: 10px; */
 }
 
 .text-area{
@@ -91,4 +101,12 @@ p{
 .footer{
     background-color:#617885;
     height:160px;
+}
+
+.navbar-nav{
+
+}
+
+.content .navbar-nav{
+    
 }
