@@ -11,8 +11,8 @@ body{
     height: 100vh;
     width: 100vw;
     /* 스크롤 제거 */
-    overflow-x: hidden;
-    overflow-y: hidden;
+    /* overflow-x: hidden;
+    overflow-y: hidden; */
 }
 
 .wrap_content{
