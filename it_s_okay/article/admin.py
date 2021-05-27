@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Comment
+# from .models import Post, Comment
 
 # class ReplyInline(admin.StackedInline):
 #      model = Reply 
@@ -19,8 +19,9 @@ from .models import Post, Comment
     
 #     title_len.short_description = '제목글자수' 
     
-admin.site.register(Comment) 
-admin.site.register(Post)
+
+# admin.site.register(Comment) 
+# admin.site.register(Post)
  
 
 

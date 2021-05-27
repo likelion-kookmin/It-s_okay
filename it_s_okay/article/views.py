@@ -1,12 +1,12 @@
-from django.shortcuts import render
-from .models import Post
+from django.shortcuts import render, get_object_or_404
+from .models import Article
 
 # class PublicPostIndexView(generic.ListView): 
 #     """게시글의 목록을 표시한다.""" 
 #     model = Post
 
-def article(request):
-    return render(request, 'index.html')
+def board(request):
+    return render(request, 'index/board.html')
 
 def post(request):
     return render(request, 'post.html')

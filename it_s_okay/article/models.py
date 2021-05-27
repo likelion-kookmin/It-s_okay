@@ -1,7 +1,7 @@
 from django.db import models
 from category.models import Large_category, Medium_category, Small_category
 
-class Post(models.Model): 
+class Article(models.Model): 
     STATE = (
         ('ing','모집중'),
         ('complete', '모집완료')
@@ -22,7 +22,7 @@ class Post(models.Model):
     headcount = models.IntegerField()
     state = models.CharField(max_length=20, choices=STATE)
     large_category = models.ForeignKey(Large_category, on_delete=models.SET_NULL, null=True)
-    edium_category = models.ForeignKey(Medium_category, on_delete=models.SET_NULL, null=True)
+    medium_category = models.ForeignKey(Medium_category, on_delete=models.SET_NULL, null=True)
     small_category = models.ForeignKey(Small_category, on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -32,10 +32,10 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    body = models.TextField()
+    body = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    article = models.ForeignKey(Post, on_delete=models.CASCADE)
+    comment = models.ForeignKey(Article, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
-        return self.body[:10]
+        return self.body
