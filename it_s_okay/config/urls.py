@@ -11,4 +11,5 @@ urlpatterns = [
     path("", main.views.index),
     path("main/", include(main.urls)),
     path("board/", include(article.urls)),
+    
 ]

@@ -7,5 +7,5 @@ urlpatterns = [
     # path('board/', views.board, name='board'),
     path('list/', views.board_list, name='board_list'),
     path('write/', views.board_write, name='board_write'),
-
+    path('detail/<int:pk>/', views.board_detail),
 ]

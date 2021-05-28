@@ -14,7 +14,7 @@
   
         <tbody>
           {% for board in boards %}
-          <tr>
+          <tr onclick="location.href='/board/detail/{{ board.id }}/'">
             <th scope="row">{{ board.id }}</th>
             <td>{{ board.title }}</td>
             <td>{{ board.created_at }}</td>
@@ -27,8 +27,8 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <button type="button">
-        <a href="{% url 'article:board_write' %}">Click here!</a>
+      <button class="btn btn-dark">
+        <a href="{% url 'article:board_write' %}">글쓰기</a>
       </button>
       <!-- <button class="btn btn-primary", action="{% url 'article:board_write' %}">글쓰기</button> -->
     </div>
