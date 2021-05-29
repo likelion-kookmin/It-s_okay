@@ -1,0 +1,72 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<div class="content">
+<table>
+    <thead>
+        <tr class="text-center">
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>등록일</th>
+            <th>조회수</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if free_list %}
+        {% for free in free_list %}
+        <tr class="text-center">
+            <td>{{ free.id }}</td>
+            <td>{{ free.title|truncatechars:30 }}</td>
+            <td>{{ free.writer }}</td>
+            <td>{{ free.registered_date|date:'Y. m. d' }}</td>
+            <td>{{ free.hits }}</td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr class="text-center">
+            <td colspan="5">
+                작성된 게시글이 없습니다.
+            </td>
+        </tr>
+        {% endif %}
+    </tbody>
+</table>
+ <div class="col-md-offset-6">
+            {% if is_paginated %}
+            <!-- <ul class="pagination justify-content-center pagination-sm"> -->
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?type={{ type }}&q={{ q }}&page={{ page_obj.previous_page_number }}"
+                        tabindex="-1" style="font-size: 15px;">이전</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" style="font-size: 15px;">이전</a>
+                </li>
+                {% endif %}
+
+                {% for page in page_range %}
+                <li class="page-item {% if page == page_obj.number %} activate {% endif %}">
+                    <a class="page-link" href="?type={{ type }}&q={{ q }}&page={{ page }}" style="font-size: 15px;">{{ page }}</a>
+                </li>
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link"
+                        href="?type={{ type }}&q={{ q }}&page={{ page_obj.next_page_number }}" style="font-size: 15px;">다음</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" style="font-size: 15px;">다음</a>
+                </li>
+                {% endif %}
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}

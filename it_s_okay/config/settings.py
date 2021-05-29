@@ -57,9 +57,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "main",
-    "user",
     "article",
     "category",
+    "user",
+    "free.apps.FreeConfig",
 ]
 
 MIDDLEWARE = [
@@ -129,7 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "ko"
 
 TIME_ZONE = "Asia/Seoul"
 
@@ -148,3 +149,6 @@ STATIC_URL = "/static/"
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "templates/static"),
 ]
+
+
+
