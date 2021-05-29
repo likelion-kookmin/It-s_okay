@@ -1,5 +1,6 @@
 from django.db import models
 from category.models import Large_category, Medium_category, Small_category
+from django.contrib.auth import get_user_model
 
 class Article(models.Model): 
     STATE = (
@@ -20,7 +21,7 @@ class Article(models.Model):
     MEDIUM_CATEGORY = (
         ("culture"),
     )
-    
+    author = models.ForeignKey(get_user_model(),on_delete=models.CASCADE)
     age = models.CharField(max_length=20, choices=AGE_STATE)
     area = models.CharField(max_length=20)
     title = models.CharField(max_length=100)

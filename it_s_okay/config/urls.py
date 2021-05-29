@@ -6,10 +6,11 @@ from article import views
 import article.urls
 
 
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", main.views.index),
     path("main/", include(main.urls)),
     path("board/", include(article.urls)),
-    
+    path("free/", include('free.urls')),
 ]

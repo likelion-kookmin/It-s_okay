@@ -26,6 +26,9 @@
 
         
       </div>
+      
+      <button class="btn btn-sm" onclick="location.href='/board/{{ board.id }}/update'">수정</button>
+      <button class="btn btn-sm" onclick="location.href='/board/{{ board.id }}/delete/'">삭제</button>
       <button class="btn btn-dark">
         <a href="{% url 'article:board_list' %}">돌아가기</a></button>
     </div>
