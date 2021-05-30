@@ -16,7 +16,7 @@ from django.contrib.auth import get_user_model
 def board_list(request):
     all_boards = Article.objects.all().order_by('-id')
     page        = int(request.GET.get('p', 1))
-    pagenator   = Paginator(all_boards, 2)
+    pagenator   = Paginator(all_boards, 4)
     boards      = pagenator.get_page(page)
     return render(request, 'index/board_list.html', {"boards" : boards})
 
@@ -34,7 +34,7 @@ def board_write(request):
     return render(request, 'index/board_write.html', {'form' : form})
 
 def board_detail(request, id):
-    board = Article.objects.get(id=id)
+    board = get_object_or_404(Article, id=id)
 
     return render(request, 'index/board_detail.html', {'board':board})
 
