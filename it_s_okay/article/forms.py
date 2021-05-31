@@ -1,9 +1,8 @@
 from django.contrib.auth.hashers import check_password
 
-from django import forms
+from django import forms 
 from django.forms.models import ModelForm
 from .models import Article
-
 
 class ArticleForm(forms.ModelForm):
     class Meta:

@@ -11,7 +11,7 @@ from django.contrib.auth import get_user_model
 def board_list(request):
     all_boards = Article.objects.all().order_by('-id')
     page        = int(request.GET.get('p', 1))
-    pagenator   = Paginator(all_boards, 5)
+    pagenator   = Paginator(all_boards, 4)
     boards      = pagenator.get_page(page)
     return render(request, 'index/board_list.html', {"boards" : boards})
 
@@ -58,10 +58,6 @@ def board_delete(request, id):
     
     return redirect('/board/list/')
 
-def search(request):
-    user_list = Article.objects.all()
-    user_filter = UserFilter(request.Get, queryset=user_list)
-    return render(request, 'index/board_list.html', {'filter':user_filter})
 
     
 

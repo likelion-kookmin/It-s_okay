@@ -1,7 +1,7 @@
 {% extends "main/base.html" %}
 
 {% block content %}
-<div class="row mt-5">
+<div>
 
   <!--제목,분류,작성일-->
   
@@ -19,12 +19,22 @@
         <span>조회수 : {{ board.body }}</span><br>
 
       </div>
+
+      <!-- <h5>댓글</h5>
+      <div>
+      <ul>
+      {% for reply in question.answer_set.all %}
+        <li>{{ answer.content }}</li>
+      {% endfor %}
+      </ul>
+      </div> -->
     
       <button class="btn btn-sm" onclick="location.href='/board/{{ board.id }}/update'">수정</button>
       <button class="btn btn-sm" onclick="location.href='/board/{{ board.id }}/delete/'">삭제</button>
       <button class="btn btn-dark">
         <a href="{% url 'article:board_list' %}">돌아가기</a></button>
-    
+      
+
         
   </div>
   {% endblock %}
