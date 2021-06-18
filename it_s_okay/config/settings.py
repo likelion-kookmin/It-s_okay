@@ -56,11 +56,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.user.CustomUserModel",
     "main",
     "article",
     "category",
-    "user",
     "free.apps.FreeConfig",
+
+    
 ]
 
 MIDDLEWARE = [

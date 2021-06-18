@@ -13,4 +13,5 @@ urlpatterns = [
     path("main/", include(main.urls)),
     path("board/", include(article.urls)),
     path("free/", include('free.urls')),
+    path("user/", include("user.urls")),
 ]
