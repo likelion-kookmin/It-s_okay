@@ -1,7 +1,61 @@
 {% extends "main/base.html" %}
 {% block content %}
+
+
 <div class = "listdiv">
-<div class="row mt-5">
+<div class = "list-inside">
+<section class="search-sec">
+  <div class="container">
+      <form action="#" method="post" novalidate="novalidate">
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="row">
+                      <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                          <select class="form-control search-slt" id="exampleFormControlSelect1">
+                              <option>지역</option>
+                              <option>Example one</option>
+                              <option>Example one</option>
+                              <option>Example one</option>
+                              <option>Example one</option>
+                              <option>Example one</option>
+                              <option>Example one</option>
+                          </select>
+                      </div>
+                      <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                        <select class="form-control search-slt" id="exampleFormControlSelect1">
+                            <option>활동</option>
+                            <option>Example one</option>
+                            <option>Example one</option>
+                            <option>Example one</option>
+                            <option>Example one</option>
+                            <option>Example one</option>
+                            <option>Example one</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                      <select class="form-control search-slt" id="exampleFormControlSelect1">
+                          <option>모집 상태</option>
+                          <option>Example one</option>
+                          <option>Example one</option>
+                          <option>Example one</option>
+                          <option>Example one</option>
+                          <option>Example one</option>
+                          <option>Example one</option>
+                      </select>
+                  </div>
+                      <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                          <button type="button" class="btn btn-danger wrn-btn">Search</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </form>
+  </div>
+</section>
+
+
+
+  <div class="row mt-5">
     <div class="col-12">
       <table class="table">
         <thead class="table-active">
@@ -26,7 +80,9 @@
       </table>
     </div>
   </div>
-  </div>
+
+
+
   <div class="row mt-2">
     <div class="col-12">
       <nav aria-label="Page navigation example">
@@ -59,9 +115,9 @@
         </ul>
       </nav>
     </div>
-  </div>
+  </.div>
   
-  
+  <div style="margin-left : 5%;">
   <div class="row">
     <div class="col-12">
       <button class="btn btn-dark">
@@ -70,4 +126,8 @@
       <!-- <button class="btn btn-primary", action="{% url 'article:board_write' %}">글쓰기</button> -->
     </div>
   </div>
+</div>
+</div>
+</div>
+
 {% endblock %}
