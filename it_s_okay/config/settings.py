@@ -56,10 +56,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "django.user.CustomUserModel",
     "main",
     "article",
     "category",
+    "user",
     "free.apps.FreeConfig",
 
     
@@ -108,7 +108,7 @@ DATABASES = {
     }
 }
 
-AUTH_USER_MODEL = "user.CustomUserModel"
+AUTH_USER_MODEL = "user.Normaluser"
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
