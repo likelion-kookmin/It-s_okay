@@ -30,8 +30,8 @@ class Article(models.Model):
     # MEDIUM_CATEGORY = (
     #     ("culture"),
     # )
-    author = models.ForeignKey(get_user_model(),on_delete=models.CASCADE)
-    age = models.CharField(max_length=20, choices=AGE_STATE)
+    author = models.ForeignKey('user.Normaluser',on_delete=models.CASCADE, verbose_name='작성자')
+    age = models.CharField(max_length=20, choices=AGE_STATE, verbose_name='연령대')
     area = models.CharField(max_length=20)
     title = models.CharField(max_length=100)
     body = models.TextField()
