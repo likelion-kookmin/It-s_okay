@@ -1,7 +1,27 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import check_password
 from .models import Normaluser
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib import auth
 
+# 회원가입 대안버전
+
+# @csrf_exempt 
+# def register(request):
+#     if request.method == "POST":
+#         if request.POST["password"] == request.POST["re_password"]:
+#             normaluser = Normaluser.objects.create_user(
+#                 username=request.POST["username"],password=request.POST["password"]
+#             )
+#             auth.login(request, normaluser)
+#             return redirect('user/login.html')
+#         return render(request, 'user/register.html')
+#     return render(request, 'user/register.html')
+
+
+#회원가입 초기버전 
+
+@csrf_exempt 
 def register(request):
     if request.method == 'GET':
         return render(request, 'user/register.html')
@@ -17,7 +37,7 @@ def register(request):
         elif password != re_password:
             res_data['error'] = '비밀번호가 일치하지 않습니다'
         else:
-            normaluser = Normaluser(
+            normaluser = Normaluser.objects.create_user(
                 username=username,
                 password=password
             )
@@ -28,6 +48,27 @@ def register(request):
 
     return render(request, 'user/register.html', res_data)
 
+# # 로그인 대안버전
+
+# @csrf_exempt 
+# def login(request):
+#     if request.method == 'POST':
+#         username = request.POST["username"]
+#         password = request.POST["password"]
+#         normaluser = auth.authenticate(request, username=username, password=password)
+        
+#         if normaluser is not None:
+#             auth.login(request, normaluser)
+#             return redirect('/')
+#         else:
+#             return render(request, 'user/login.html', {'error':'아이디 혹은 비밀번호가 다릅니다.'})
+
+#     else:
+#         return render(request, 'user/login.html')
+
+# 로그인 초기버전
+
+@csrf_exempt 
 def login(request):
     if request.method == 'GET':
         return render(request, 'user/login.html')
@@ -54,3 +95,7 @@ def logout(request):
         del(request.session['user'])
 
         return redirect('/')
+
+def logout(request):
+    auth.logout(request)
+    return redirect('/')

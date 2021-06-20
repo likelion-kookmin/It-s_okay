@@ -4,9 +4,14 @@ from django.utils import timezone
 from .models import Article
 from .forms import ArticleForm
 from django.contrib.auth import get_user_model
+from user.models import Normaluser
+from django.views.decorators.csrf import csrf_exempt
 
 
+@csrf_exempt 
 
+
+# 보드 리스트
 
 def board_list(request):
     all_boards = Article.objects.all().order_by('-id')
@@ -15,28 +20,65 @@ def board_list(request):
     boards      = pagenator.get_page(page)
     return render(request, 'index/board_list.html', {"boards" : boards})
 
+# 보드 작성
+
+# def board_write(request):
+#     if request.method == 'POST':
+#         form = ArticleForm(request.POST)
+#         if form.is_valid():
+#             article = form.save(commit=False)
+#             article.author = request.user
+#             article.save()
+#             print(article.id)
+#             return redirect('/board/' + str(article.id))
+        
+#     form = ArticleForm()
+#     return render(request, 'index/board_write.html', {'form' : form})
+
 def board_write(request):
     if request.method == 'POST':
         form = ArticleForm(request.POST)
         if form.is_valid():
-            article = form.save(commit=False)
-            article.author = request.user
+            user_id = request.session.get('user')
+            normaluser = Normaluser.objects.get(pk=user_id)
+
+            article = Article()
+            article.title = form.cleaned_data['title']
+            article.category = form.cleaned_data['category']
+            article.area = form.cleaned_data['area']
+            # article.date = form.cleaned_data['date']
+            article.age = form.cleaned_data['age']
+            article.area = form.cleaned_data['area']
+            article.headcount = form.cleaned_data['headcount']
+            article.state = form.cleaned_data['state']
+            article.body = form.cleaned_data['body']
+            article.kakao_url = form.cleaned_data['kakao_url']
+            article.writer = normaluser
             article.save()
             print(article.id)
             return redirect('/board/' + str(article.id))
-        
-    form = ArticleForm()
-    return render(request, 'index/board_write.html', {'form' : form})
+    
+    else :
+        form = ArticleForm()
+    
+    return render(request, 'index/board_write.html', {'form': form})
+
+
+
+# 보드 디테일
 
 def board_detail(request, id):
     board = get_object_or_404(Article, id=id)
 
     return render(request, 'index/board_detail.html', {'board':board})
 
+# 보드 수정
+
 def board_edit(request,id):
     board = Article.objects.get(id=id)
     context= {'board': board}
     return render(request, 'index/board_edit.html', context)
+
 
 def board_update(request, id):
     board = get_object_or_404(Article, id=id)
@@ -50,6 +92,8 @@ def board_update(request, id):
         form = ArticleForm(instance = board)
 
         return render(request, 'index/board_edit.html', {'form':form})
+
+# 보드 삭제
 
 def board_delete(request, id):
     board = Article.objects.get(id=id)
