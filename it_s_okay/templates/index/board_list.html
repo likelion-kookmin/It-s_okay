@@ -62,8 +62,12 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">제목</th>
-            <th scope="col">작성일</th>
-            <th scope="col">최종수정일</th>
+            <th scope="col">활동</th>
+            <th scope="col">위치</th>
+            <th scope="col">연령대</th>
+            <th scope="col">모집인원</th>
+            <th scope="col">모집상태</th>
+            
           </tr>
         </thead>
   
@@ -72,8 +76,12 @@
           <tr onclick="location.href='/board/{{ board.id }}/'">
             <th scope="row">{{ board.id }}</th>
             <td>{{ board.title }}</td>
-            <td>{{ board.created_at }}</td>
-            <td>{{ board.updated_at }}</td>
+            <td>{{ board.category }}</td>
+            <td>{{ board.area }}</td>
+            <td>{{ board.age }}</td>
+            <td>{{ board.headcount }}</td>
+            <td>{{ board.state }}</td>
+
           </tr>
           {% endfor %}
           </tbody>
@@ -120,7 +128,7 @@
   <div style="margin-left : 5%;">
   <div class="row">
     <div class="col-12">
-      <button class="btn btn-dark">
+      <button  class="btn btn-dark ">
         <a href="{% url 'article:board_write' %}">글쓰기</a>
       </button>
       <!-- <button class="btn btn-primary", action="{% url 'article:board_write' %}">글쓰기</button> -->
