@@ -2,22 +2,23 @@ body{
     margin: 0;
     font-family:  'Helvetica Neue',-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
     background: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
-    min-height: 100vh;
+    /* min-height: 100vh; */
     /* background-color: #485861; */
     color: #000000;
     font-size: 11px;
     line-height: 1.4;
     font-weight: 500;
-    height: 100vh;
-    width: 100vw;
+    /* height: 100vh;
+    width: 100vw; */
     /* 스크롤 제거 */
     /* overflow-x: hidden;
     overflow-y: hidden; */
 }
 
 .wrap_content{
-  height: 100%;
+  /* height: 100%; */
   width: 100%;
+  height: 90vh;
   margin: 0;
   padding: 0;
 }
@@ -100,8 +101,10 @@ p {
 .footer{
     background-color:#AFC1ED;
     height: 20%;
-    margin-top: 10%;
+    /* margin-top: 10%; */
 }
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+
 
 .listdiv{
   margin-top: 5%;

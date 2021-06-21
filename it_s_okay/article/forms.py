@@ -7,7 +7,12 @@ from .models import Article
 
 
 
-class ArticleForm(forms.Form):
+class ArticleForm(forms.ModelForm):
+    class Meta:
+        model = Article
+        fields = ['title','category','area','age','headcount','state','body','kakao_url'] 
+
+        
     abstract=True
     STATE = (
     (1, "모집중"),
@@ -62,7 +67,7 @@ class ArticleForm(forms.Form):
     #         'required': '만남 희망 날짜를 선택해주세요.'
     #     },
     #     )
-
+    
     headcount = forms.IntegerField(
         label= "모집 인원",
         error_messages={
@@ -90,6 +95,9 @@ class ArticleForm(forms.Form):
         },
         label= "오픈 카톡 url"
     )
+
+    # class Meta:
+    #     model = Article
 
 
     #     status = forms.ChoiceField(choices = STATUS_CHOICES, label="", initial='', widget=forms.Select(), required=True)

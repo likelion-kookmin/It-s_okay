@@ -1,32 +1,34 @@
 {% extends "main/base.html" %}
 
 {% block content %}
+{% load bootstrap4 %}
 
 
   <!--제목,분류,작성일-->
   
     <!--작성자, 조회수-->
-    <div>
-      <!-- todo : 템플릿 form 만들기 -->
-        <span>작성자 : {{ board.title }}</span><br>
-        <span>조회수 : {{ board.category }}</span><br>
-        <span>조회수 : {{ board.meeting_date }}</span><br>
-        <span>조회수 : {{ board.age }}</span><br>
-        <span>조회수 : {{ board.area }}</span><br>
-        <span>조회수 : {{ board.headcount }}</span><br>
-        <span>조회수 : {{ board.kakao_url }}</span><br>
-        <span>조회수 : {{ board.state }}</span><br>
-        <span>조회수 : {{ board.body }}</span><br>
+    <div class="listdiv">
+      <div class="list-inside">
+        <div class="form-group">
+          <!-- <label for="title">제목</label>
+          <input type="text" class="form-control" id="title" value="{{ board.title }}" readonly />
+          <label for="contents">내용</label>
+          <textarea class="form-control" readonly>{{ board.body }}</textarea> -->
+          {% bootstrap_form form %}
 
+        </div>
+        <button class="btn btn-dark" onclick="location.href='/board/{{ board.id }}/edit'">수정</button>
+        <button class="btn btn-dark" onclick="location.href='/board/{{ board.id }}/delete/'">삭제</button>
+        <button class="btn btn-dark">
+        <a href="{% url 'article:board_list' %}">돌아가기</a>
+        </button>
       </div>
+      
+    </div>
 
 
     
-      <button class="btn btn-sm" onclick="location.href='/board/{{ board.id }}/update'">수정</button>
-      <button class="btn btn-sm" onclick="location.href='/board/{{ board.id }}/delete/'">삭제</button>
-      <button class="btn btn-dark">
-        <a href="{% url 'article:board_list' %}">돌아가기</a>
-      </button>
+      
       
 
         

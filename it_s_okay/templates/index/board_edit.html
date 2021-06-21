@@ -1,17 +1,23 @@
 {% extends "main/base.html" %}
 
 {% block content %}
-
+{% load bootstrap4 %}
 <br>
-<div class="container">
-	<form method="POST">
-	  {% csrf_token %}
-	  <table>
-		{{form.as_table}}
-	  </table>
-	  <br>
-	  <input class="btn btn-dark" type="submit" value="수정하기">
-  </form>
+<div class="listdiv">
+	<div class="list-inside">
+		<div class="form-group">
+		<form method="POST", aria-readonly="true">
+		{% csrf_token %}
+		
+		{% bootstrap_form form %}
+		<input class="btn btn-dark" type="submit" value="수정하기">
+		<button class="btn btn-dark">
+			<a href="{% url 'article:board_list' %}">돌아가기</a>
+			</button>	
+		</form>
+		</div>
+
+</div>
 </div>
 
 {% endblock %}
