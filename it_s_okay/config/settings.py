@@ -61,7 +61,7 @@ INSTALLED_APPS = [
     "category",
     "user",
     "free.apps.FreeConfig",
-
+    'bootstrap4',
     
 ]
 

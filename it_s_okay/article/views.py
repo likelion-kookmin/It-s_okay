@@ -69,29 +69,57 @@ def board_write(request):
 
 def board_detail(request, id):
     board = get_object_or_404(Article, id=id)
-
-    return render(request, 'index/board_detail.html', {'board':board})
+    form = ArticleForm(instance = board)
+    
+    return render(request, 'index/board_detail.html', {'form':form,'board':board})
 
 # 보드 수정
-
-def board_edit(request,id):
-    board = Article.objects.get(id=id)
-    context= {'board': board}
-    return render(request, 'index/board_edit.html', context)
-
-
-def board_update(request, id):
+def board_edit(request, id):
     board = get_object_or_404(Article, id=id)
     if request.method == "POST":
-        form = ArticleForm(request.POST,instance = board)
-        if form.is_valid():
-            form.save()
-            return redirect('/board/' + str(id))
-    
+            form = ArticleForm(request.POST, request.FILES)
+            if form.is_valid():
+                print(form.cleaned_data)
+                board.title = form.cleaned_data['title']
+                board.category = form.cleaned_data['category']
+                board.area = form.cleaned_data['area']
+                board.age = form.cleaned_data['age']
+                board.headcount = form.cleaned_data['headcount']
+                board.state = form.cleaned_data['state']
+                board.body = form.cleaned_data['body']
+                board.kakao_url = form.cleaned_data['kakao_url']
+
+                board.save()
+                return redirect('/board/'+str(board.id))
+            
+        # 수정사항을 입력하기 위해 페이지에 처음 접속했을 때
     else:
         form = ArticleForm(instance = board)
+        # context = {
+        #     'form' : form,
+        #     'writing' : True,
+        #     'now' : 'edit',
+        # }
+        return render(request, 'index/board_edit.html',{'form':form})
 
-        return render(request, 'index/board_edit.html', {'form':form})
+# def board_edit(request,id):
+#     board = Article.objects.get(id=id)
+#     context= {'board': board}
+#     return render(request, 'index/board_edit.html', context)
+
+
+# def board_update(request, id):
+#     board = get_object_or_404(Article, id=id)
+#     if request.method == "POST":
+#         form = ArticleForm(request.POST,instance = board)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('/board/' + str(id))
+    
+#     else:
+#         form = ArticleForm(instance = board)
+
+#         return render(request, 'index/board_edit.html', {'form':form})
 
 # 보드 삭제
 

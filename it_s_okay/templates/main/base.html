@@ -42,17 +42,18 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">비밀 게시판</a>
               </li>
-              <li>
-                <button class="btn btn-dark">
-                  <a href="{% url 'user:register' %}">회원가입</a>
-                </button>
-              </li>
-              <li>
+
+
                 {% if user.is_authenticated %}
                 <button class="btn btn-dark">
                   <a href="{% url 'user:logout' %}">로그아웃</a>
                 </button>
                 {% else %}
+                <li>
+                  <button class="btn btn-dark">
+                    <a href="{% url 'user:register' %}">회원가입</a>
+                  </button>
+                </li>
                 <button class="btn btn-dark">
                   <a href="{% url 'user:login' %}">로그인</a>
                 </button>
