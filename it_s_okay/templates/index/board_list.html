@@ -7,48 +7,56 @@
 <section class="search-sec">
   <div class="container">
       <form action="#" method="post" novalidate="novalidate">
-          <div class="row">
-              <div class="col-lg-12">
-                  <div class="row">
-                      <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                          <select class="form-control search-slt" id="exampleFormControlSelect1">
-                              <option>지역</option>
-                              <option>Example one.</option>
-                              <option>Example one</option>
-                              <option>Example one</option>
-                              <option>Example one</option>
-                              <option>Example one</option>
-                              <option>Example one</option>
-                          </select>
-                      </div>
-                      <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                        <select class="form-control search-slt" id="exampleFormControlSelect1">
-                            <option>활동</option>
-                            <option>Example one</option>
-                            <option>Example one</option>
-                            <option>Example one</option>
-                            <option>Example one</option>
-                            <option>Example one</option>
-                            <option>Example one</option>
-                        </select>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                      <select class="form-control search-slt" id="exampleFormControlSelect1">
-                          <option>모집 상태</option>
-                          <option>Example one</option>
-                          <option>Example one</option>
-                          <option>Example one</option>
-                          <option>Example one</option>
-                          <option>Example one</option>
-                          <option>Example one</option>
-                      </select>
-                  </div>
-                      <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                          <button type="button" class="btn btn-danger wrn-btn">Search</button>
-                      </div>
-                  </div>
+          <div class="row row-cols-5">
+              <div class="a">
+                  <select class="form-control search-slt" id="exampleFormControlSelect1">
+                      <option>활동</option>
+                      <option>Example one.</option>
+                      <option>Example one</option>
+                      <option>Example one</option>
+                      <option>Example one</option>
+                      <option>Example one</option>
+                      <option>Example one</option>
+                  </select>
               </div>
+              <div class="a">
+                <select class="form-control search-slt" id="exampleFormControlSelect1">
+                    <option>연령대</option>
+                    <option>Example one</option>
+                    <option>Example one</option>
+                    <option>Example one</option>
+                    <option>Example one</option>
+                    <option>Example one</option>
+                    <option>Example one</option>
+                </select>
+            </div>
+            <div class="a">
+              <select class="form-control search-slt" id="exampleFormControlSelect1">
+                  <option>모집인원</option>
+                  <option>Example one</option>
+                  <option>Example one</option>
+                  <option>Example one</option>
+                  <option>Example one</option>
+                  <option>Example one</option>
+                  <option>Example one</option>
+              </select>
+            </div>
+            <div class="a">
+              <select class="form-control search-slt" id="exampleFormControlSelect1">
+                  <option>모집상태</option>
+                  <option>Example one</option>
+                  <option>Example one</option>
+                  <option>Example one</option>
+                  <option>Example one</option>
+                  <option>Example one</option>
+                  <option>Example one</option>
+              </select>
+            </div>
+            <div class="a">
+                <button type="button" class="btn btn-danger wrn-btn">Search</button>
+            </div>
           </div>
+        </div>
       </form>
   </div>
 </section>
@@ -60,7 +68,6 @@
       <table class="table">
         <thead class="table-active">
           <tr>
-            <th scope="col">#</th>
             <th scope="col">제목</th>
             <th scope="col">활동</th>
             <th scope="col">위치</th>
@@ -74,7 +81,6 @@
         <tbody>
           {% for board in boards %}
           <tr onclick="location.href='/board/{{ board.id }}/'">
-            <th scope="row">{{ board.id }}</th>
             <td>{{ board.title }}</td>
             <td>{{ board.category }}</td>
             <td>{{ board.area }}</td>

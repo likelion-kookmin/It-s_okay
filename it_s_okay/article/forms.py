@@ -10,29 +10,57 @@ from .models import Article
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
-        fields = ['title','category','area','age','headcount','state','body','kakao_url'] 
+        fields = ['title','category','area','age','meeting_date','headcount','state','body','kakao_url'] 
 
         
     abstract=True
-    STATE = (
-    (1, "모집중"),
-    (2, "모집완료"),
-    )
-    AGE_STATE = (
-    (1, ("10대")),
-    (2, ("20대")),
-    (2, ("30대")),
-    (2, ("40대")),
-    (2, ("50대 이상")),
-    )
+    STATE = [
+    ("모집중", "모집중"),
+    ("모집완료", "모집완료"),
+    ]
+    AGE_STATE = [
+    ("10대", "10대"),
+    ("20대", "20대"),
+    ("30대", "30대"),
+    ("40대", "40대"),
+    ("50대 이상", "50대 이상"),
+    ]
 
-    CATEGORY = (
-    (1, ("풋살")),
-    (2, ("축구")),
-    (3, ("농구")),
-    (4, ("야구")),
-    (5, ("배드민턴")),
-    )   
+    CATEGORY = [
+    ('--야외 스포츠--',
+        (
+    ("풋살", "풋살"),
+    ("축구", "축구"),
+    ("농구", "농구"),
+    ("야구", "야구"),
+    ("배드민턴", "배드민턴"),
+        )
+    ),
+    ('--문화--',
+        (
+    ("영화", "영화"),
+    ("전시회", "전시회"),
+    ("독서모임", "독서모임"),
+        )
+    ),
+    ('--엔터테이먼트--',
+        (
+    ("방탈출", "방탈출"),
+    ("보드게임", "보드게임"),
+        )
+    ),
+    ('--스터디--',
+        (
+    ("스터디", "스터디"),
+        )
+    ),
+    ('--온라인 활동--',
+        (
+    ("게임", "게임"),
+    ("온라인 스터디", "온라인 스터디"),
+        )
+    ),             
+    ]  
 
     title = forms.CharField(
         error_messages={
@@ -60,13 +88,13 @@ class ArticleForm(forms.ModelForm):
             'required': '모집 연령대를 선택해주세요.'
         },
         )
-    # meeting_date = forms.DateField(
-    #     widget = forms.SelectDateWidget,
-    #     label = "만남 희망 날짜",
-    #     error_messages={
-    #         'required': '만남 희망 날짜를 선택해주세요.'
-    #     },
-    #     )
+    meeting_date = forms.DateField(
+        widget = forms.SelectDateWidget,
+        label = "만남 희망 날짜",
+        error_messages={
+            'required': '만남 희망 날짜를 선택해주세요.'
+        },
+        )
     
     headcount = forms.IntegerField(
         label= "모집 인원",

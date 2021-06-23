@@ -17,8 +17,8 @@
           {% bootstrap_form form %}
 
         </div>
-        <button class="btn btn-dark" onclick="location.href='/board/{{ board.id }}/edit'">수정</button>
-        <button class="btn btn-dark" onclick="location.href='/board/{{ board.id }}/delete/'">삭제</button>
+        <button class="btn btn-dark" onclick="location.href='/board/{{ board.id }}/edit'">수정하기</button>
+        <button class="btn btn-dark" onclick="location.href='/board/{{ board.id }}/delete/'">삭제하기</button>
         <button class="btn btn-dark">
         <a href="{% url 'article:board_list' %}">돌아가기</a>
         </button>

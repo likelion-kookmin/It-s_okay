@@ -15,7 +15,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 def board_list(request):
     all_boards = Article.objects.all().order_by('-id')
-    page        = int(request.GET.get('p', 1))
+    page        = int(request.GET.get('p', 5))
     pagenator   = Paginator(all_boards, 10)
     boards      = pagenator.get_page(page)
     return render(request, 'index/board_list.html', {"boards" : boards})
