@@ -9,16 +9,13 @@
   <!--제목,분류,작성일-->
   
     <!--작성자, 조회수-->
-    <div class="listdiv">
-      <div class="list-inside">
-        <!-- <div class="form-group"> -->
-          <div class="fuck"><b>{{ board.title }}</b>
-          </div>
+    <div class="ArticleContentBox">
+          <div class="article_header"><b>{{ board.title }}</b></div>
+          <p style="border-style: outset;border-color: black;"></p>
           <input type="text" class="form-control" id="title" value="{{ board.title }}" readonly />
           <label for="contents">내용</label>
           <textarea class="form-control" readonly>{{ board.body }}</textarea>
 
-        <!-- </div> -->
         {% if user == board.writer %}
         <button class="btn btn-dark" onclick="location.href='/board/{{ board.id }}/edit'">수정하기</button>
         <button class="btn btn-dark" onclick="location.href='/board/{{ board.id }}/delete/'">삭제하기</button>
@@ -27,7 +24,6 @@
         <button class="btn btn-dark">
         <a href="{% url 'article:board_list' %}">돌아가기</a>
         </button>
-      </div>
     </div>
 
 
