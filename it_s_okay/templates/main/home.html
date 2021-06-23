@@ -1,6 +1,7 @@
 
 {% extends 'main/base.html' %}
 {% block content %}
+{% load static %}
 
 
     <!-- 텍스트 영역 -->
@@ -10,6 +11,9 @@
             <!-- <div class="title">한번 보고 안 볼 사이니까...<div class="line"></div><br> never<br> get old</div> -->
         </p>
     </div>
+
+    <img src="{% static "../static/imgs/logo2.png" %}" alt="Hi!" />
+
     <!-- <div id="circle-wrapper">
         <div class="circle"></div>
         <div class="circle"></div>
