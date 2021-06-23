@@ -1,6 +1,6 @@
 {% extends "main/base.html" %}
 {% block content %}
-
+{% load static %}
 
 <div class = "listdiv">
 <div class = "list-inside">
@@ -62,7 +62,7 @@
 </section>
 
 
-
+  <div class='search-sec-list'>
   <div class="row mt-5">
     <div class="col-12">
       <table class="table">
@@ -96,8 +96,7 @@
   </div>
 
 
-
-  <div class="row mt-2">
+    <div class="row mt-2">
     <div class="col-12">
       <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
@@ -129,7 +128,10 @@
         </ul>
       </nav>
     </div>
-  </.div>
+  </div>
+
+
+
   
   <div style="margin-left : 5%;">
   <div class="row">
@@ -138,12 +140,15 @@
         <a href="{% url 'article:board_write' %}">글쓰기</a>
       </button>
       <!-- <button class="btn btn-primary", action="{% url 'article:board_write' %}">글쓰기</button> -->
+
     </div>
   </div>
 </div>
 </div>
 </div>
 </div>
+</div>
+
 
 
 {% endblock %}

@@ -50,45 +50,45 @@ def register(request):
 
 # # 로그인 대안버전
 
-# @csrf_exempt 
-# def login(request):
-#     if request.method == 'POST':
-#         username = request.POST["username"]
-#         password = request.POST["password"]
-#         normaluser = auth.authenticate(request, username=username, password=password)
+@csrf_exempt 
+def login(request):
+    if request.method == 'POST':
+        username = request.POST["username"]
+        password = request.POST["password"]
+        normaluser = auth.authenticate(request, username=username, password=password)
         
-#         if normaluser is not None:
-#             auth.login(request, normaluser)
-#             return redirect('/')
-#         else:
-#             return render(request, 'user/login.html', {'error':'아이디 혹은 비밀번호가 다릅니다.'})
+        if normaluser is not None:
+            auth.login(request, normaluser)
+            return redirect('/')
+        else:
+            return render(request, 'user/login.html', {'error':'아이디 혹은 비밀번호가 다릅니다.'})
 
-#     else:
-#         return render(request, 'user/login.html')
+    else:
+        return render(request, 'user/login.html')
 
 # 로그인 초기버전
 
-@csrf_exempt 
-def login(request):
-    if request.method == 'GET':
-        return render(request, 'user/login.html')
-    elif request.method == 'POST':
-        username = request.POST.get('username', None)
-        password = request.POST.get('password', None)
+# @csrf_exempt 
+# def login(request):
+#     if request.method == 'GET':
+#         return render(request, 'user/login.html')
+#     elif request.method == 'POST':
+#         username = request.POST.get('username', None)
+#         password = request.POST.get('password', None)
 
-        res_data = {}
-        if not(username and password):
-            res_data['error'] = '모든 값을 입력해야합니다.'
-        else:
-            normaluser = Normaluser.objects.get(username=username)
-            if check_password(password, normaluser.password):
-                request.session['user'] = normaluser.id
-                return redirect('/')
+#         res_data = {}
+#         if not(username and password):
+#             res_data['error'] = '모든 값을 입력해야합니다.'
+#         else:
+#             normaluser = Normaluser.objects.get(username=username)
+#             if check_password(password, normaluser.password):
+#                 request.session['user'] = normaluser.id
+#                 return redirect('/')
 
-            else:
-                res_data['error'] = '비밀번호를 틀렸습니다.'
+#             else:
+#                 res_data['error'] = '비밀번호를 틀렸습니다.'
         
-        return render(request, 'user/login.html', res_data)
+#         return render(request, 'user/login.html', res_data)
 
 def logout(request):
     if request.session.get('user'):
