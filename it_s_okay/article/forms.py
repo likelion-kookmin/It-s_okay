@@ -134,3 +134,9 @@ class ArticleForm(forms.ModelForm):
 #         labels = {
 #             'body': '댓글내용',
 #         }
+
+# class CommentForm(forms.ModelForm):
+
+#     class Meta:
+#         model = Comment
+#         fields = ('author', 'text',)

@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="{% static "css/board_detail.css" %}" type="text/css" />
 {% endblock %}
 
+{% load bootstrap4 %}
+
 
   <!--제목,분류,작성일-->
   
@@ -86,21 +88,22 @@
             <p style="border-style: groove;border-color: #1465AA;border-width: thin;"></p>
             <div>
               <div>
-
-                <pre class='fontfont'>{{ board.body }}</pre>
-
-
-              
+                <!-- <pre class='fontfont'>{{ board.body }}</pre> -->
+                {{board.body | linebreaksbr}}
               </div>
             <p style="border-style: groove;border-color: #1465AA;border-width: thin;"></p>
             </div>
             <div class='comment_wrapper'>
               <div>
                 댓글 <i class="iconify" data-icon="akar-icons:comment"></i>
+                Comments: {{ board.comments.count }}
+              </div>
+              <div>
               </div>
 
-              </div>
+
               
+              </div>
             </div>
             
           
