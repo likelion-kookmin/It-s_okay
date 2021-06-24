@@ -92,12 +92,17 @@
 
               
               </div>
+            <p style="border-style: groove;border-color: #1465AA;border-width: thin;"></p>
             </div>
             <div class='comment_wrapper'>
-              댓글
-            </div>
+              <div>
+                댓글 <i class="iconify" data-icon="akar-icons:comment"></i>
+              </div>
 
-          </div>
+              </div>
+              
+            </div>
+            
           
           <div>
             {% if user == board.writer %}
@@ -108,6 +113,9 @@
               <a href="{% url 'article:board_list' %}">돌아가기</a>
               </button>
           </div>
-  </div>
+        </div>
+
+
+
 
   {% endblock %}

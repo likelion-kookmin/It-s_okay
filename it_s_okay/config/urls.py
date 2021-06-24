@@ -11,7 +11,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", main.views.index),
     path("main/", include(main.urls)),
-    path("board/", include(article.urls)),
+    path("board/", include('article.urls',namespace='board')),
     path("free/", include('free.urls')),
     path("user/", include("user.urls")),
 ]

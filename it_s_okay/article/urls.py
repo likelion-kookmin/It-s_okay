@@ -11,5 +11,5 @@ urlpatterns = [
     path('<int:id>/', views.board_detail,name='board_detail'),
     path('<int:id>/edit/', views.board_edit,name='board_edit'),
     path('<int:id>/delete/',views.board_delete,name="board_delete"),
-    
+
 ]

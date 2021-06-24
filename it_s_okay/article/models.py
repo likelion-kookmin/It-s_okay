@@ -36,6 +36,15 @@ class Comment(models.Model):
     writer = models.ForeignKey('user.Normaluser',on_delete=models.CASCADE, verbose_name='댓글 작성자')
     body = models.CharField(max_length=200, verbose_name='댓글 본문')
     comment = models.ForeignKey(Article, on_delete=models.CASCADE, verbose_name='댓글 작성자')
-
+    create_date = models.DateTimeField()
+    modify_date = models.DateTimeField(null=True, blank=True)
+    
     def __str__(self) -> str:
         return self.body
+    
+    class Meta:
+        db_table = 'cool_board_comment'
+        verbose_name = '쿨괜 게시판_댓글'
+        verbose_name_plural = '쿨괜 게시판_댓글'
+
+
