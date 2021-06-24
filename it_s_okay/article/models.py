@@ -32,11 +32,10 @@ class Article(models.Model):
     
 
 
-# class Comment(models.Model):
-#     body = models.CharField(max_length=200)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
-#     comment = models.ForeignKey(Article, on_delete=models.CASCADE)
+class Comment(models.Model):
+    writer = models.ForeignKey('user.Normaluser',on_delete=models.CASCADE, verbose_name='댓글 작성자')
+    body = models.CharField(max_length=200, verbose_name='댓글 본문')
+    comment = models.ForeignKey(Article, on_delete=models.CASCADE, verbose_name='댓글 작성자')
 
-#     def __str__(self) -> str:
-#         return self.body
+    def __str__(self) -> str:
+        return self.body
