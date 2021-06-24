@@ -114,15 +114,19 @@ class ArticleForm(forms.ModelForm):
         error_messages={
             'required': '본문을 입력해주세요.'
         },
-        widget = forms.Textarea,
+        widget = forms.Textarea(attrs={'autocomplete':'off'}),
         label = "본문"
     )
+
+
     kakao_url = forms.CharField(
         error_messages={
             'required': '만나기를 희망하는 위치를 입력해주세요.'
         },
         label= "오픈 카톡 url"
     )
+
+
 
     # class Meta:
     #     model = Article

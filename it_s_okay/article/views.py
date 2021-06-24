@@ -22,45 +22,45 @@ def board_list(request):
 
 # 보드 작성
 
-# def board_write(request):
-#     if request.method == 'POST':
-#         form = ArticleForm(request.POST)
-#         if form.is_valid():
-#             article = form.save(commit=False)
-#             article.author = request.user
-#             article.save()
-#             print(article.id)
-#             return redirect('/board/' + str(article.id))
-        
-#     form = ArticleForm()
-#     return render(request, 'index/board_write.html', {'form' : form})
-
 def board_write(request):
     if request.method == 'POST':
         form = ArticleForm(request.POST)
         if form.is_valid():
-            user_id = request.session.get('user')
-            normaluser = Normaluser.objects.get(pk=user_id)
-
-            article = Article()
-            article.title = form.cleaned_data['title']
-            article.category = form.cleaned_data['category']
-            article.area = form.cleaned_data['area']
-            # article.date = form.cleaned_data['date']
-            article.age = form.cleaned_data['age']
-            article.headcount = form.cleaned_data['headcount']
-            article.state = form.cleaned_data['state']
-            article.body = form.cleaned_data['body']
-            article.kakao_url = form.cleaned_data['kakao_url']
-            article.writer = normaluser
+            article = form.save(commit=False)
+            article.writer = request.user
             article.save()
             print(article.id)
             return redirect('/board/' + str(article.id))
+        
+    form = ArticleForm()
+    return render(request, 'index/board_write.html', {'form' : form})
+
+# def board_write(request):
+#     if request.method == 'POST':
+#         form = ArticleForm(request.POST)
+#         if form.is_valid():
+#             user_id = request.session.get('user')
+#             normaluser = Normaluser.objects.get(pk=user_id)
+
+#             article = Article()
+#             article.title = form.cleaned_data['title']
+#             article.category = form.cleaned_data['category']
+#             article.area = form.cleaned_data['area']
+#             # article.date = form.cleaned_data['date']
+#             article.age = form.cleaned_data['age']
+#             article.headcount = form.cleaned_data['headcount']
+#             article.state = form.cleaned_data['state']
+#             article.body = form.cleaned_data['body']
+#             article.kakao_url = form.cleaned_data['kakao_url']
+#             article.writer = normaluser
+#             article.save()
+#             print(article.id)
+#             return redirect('/board/' + str(article.id))
     
-    else :
-        form = ArticleForm()
+#     else :
+#         form = ArticleForm()
     
-    return render(request, 'index/board_write.html', {'form': form})
+#     return render(request, 'index/board_write.html', {'form': form})
 
 
 
