@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from category.models import Large_category, Medium_category, Small_category
 from django.contrib.auth import get_user_model
 from user.models import *
@@ -32,10 +33,51 @@ class Article(models.Model):
     
 
 
-class Comment(models.Model):
-    writer = models.ForeignKey('user.Normaluser',on_delete=models.CASCADE, verbose_name='댓글 작성자')
-    body = models.CharField(max_length=200, verbose_name='댓글 본문')
-    comment = models.ForeignKey(Article, on_delete=models.CASCADE, verbose_name='댓글 작성자')
+# class Comment(models.Model):
+#     writer = models.ForeignKey('user.Normaluser',on_delete=models.CASCADE, verbose_name='댓글 작성자')
+#     body = models.CharField(max_length=200, verbose_name='댓글 본문')
+#     comment = models.ForeignKey(Article, on_delete=models.CASCADE, verbose_name='댓글 작성자')
+#     create_date = models.DateTimeField()
+#     modify_date = models.DateTimeField(null=True, blank=True)
+    
+#     def __str__(self) -> str:
+#         return self.body
+    
+#     class Meta:
+#         db_table = 'cool_board_comment'
+#         verbose_name = '쿨괜 게시판_댓글'
+#         verbose_name_plural = '쿨괜 게시판_댓글'
 
-    def __str__(self) -> str:
-        return self.body
+# class Comment(models.Model):
+#     board = models.ForeignKey('article.Article', on_delete=models.CASCADE, related_name='comments', default=1)
+#     author = models.CharField(max_length=200, default=1)
+#     text = models.TextField(default=1)
+#     created_date = models.DateTimeField(default=timezone.now)
+#     approved_comment = models.BooleanField(default=False)
+
+#     def approve(self):
+#         self.approved_comment = True
+#         self.save()
+
+#     def __str__(self):
+#         return self.text
+    
+#     class Meta:
+#         db_table = 'cool_board_comment'
+#         verbose_name = '쿨괜 게시판_댓글'
+#         verbose_name_plural = '쿨괜 게시판_댓글'
+
+class Comment(models.Model):
+    post = models.ForeignKey(Article, on_delete = models.CASCADE, default="")
+    user = models.ForeignKey(Normaluser, on_delete = models.CASCADE, default="")
+    content = models.TextField(default="")
+
+    def __str__(self):
+        return self.text
+    
+    class Meta:
+        db_table = 'cool_board_comment'
+        verbose_name = '쿨괜 게시판_댓글'
+        verbose_name_plural = '쿨괜 게시판_댓글'
+
+

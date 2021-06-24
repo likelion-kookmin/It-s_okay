@@ -126,6 +126,16 @@ p {
   padding: 2%;
 }
 
+.listdiv_list{
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: #6783AA;
+  padding: 2%;
+  box-shadow: 4px 4px 3px 1px #1465AA;
+}
+
+
 .list-inside{
   
   height: 100%;
