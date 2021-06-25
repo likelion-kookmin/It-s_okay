@@ -60,6 +60,10 @@ body{
 }
 >>>>>>> 76604e4b5248f1c9df64429199dc3c06b2ece339:it_s_okay/templates/static/css/base.css
 
+.center{
+  text-align: center;
+}
+
 .wrap_content{
   /* height: 100%; */
   
@@ -165,6 +169,16 @@ p {
   background-color: #6783AA;
   padding: 2%;
 }
+
+.listdiv_list{
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: #6783AA;
+  padding: 2%;
+  box-shadow: 4px 4px 3px 1px #1465AA;
+}
+
 
 .list-inside{
   

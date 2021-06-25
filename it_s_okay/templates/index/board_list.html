@@ -2,7 +2,7 @@
 {% block content %}
 {% load static %}
 
-<div class = "listdiv">
+<div class = "listdiv_list">
 <div class = "list-inside">
 <section class="search-sec">
   <div class="container">
@@ -63,21 +63,20 @@
 
 
   <div class='search-sec-list'>
+  <div class='center'>
   <div class="row mt-5">
     <div class="col-12">
       <table class="table">
         <thead class="table-active">
-          <tr>
-            <th scope="col">제목</th>
-            <th scope="col">활동</th>
-            <th scope="col">위치</th>
-            <th scope="col">연령대</th>
-            <th scope="col">모집인원</th>
-            <th scope="col">모집상태</th>
-            
+          <tr style="background-color:#064989;">
+            <th scope="col">제목 <i class="iconify" data-icon="noto:cat-with-wry-smile""></i></th>
+            <th scope="col">활동 <i class="iconify" data-icon="noto:lollipop"></i></th>
+            <th scope="col">위치 <i class="iconify" data-icon="openmoji:location-indicator-red"></i></th>
+            <th scope="col">연령대 <i class="iconify" data-icon="emojione:face-blowing-a-kiss"></i></th>
+            <th scope="col">모집인원 <i class="iconify" data-icon="openmoji:love-you-gesture"></i></th>
+            <th scope="col">모집상태 <i class="iconify" data-icon="emojione:four-leaf-clover"></i></th>
           </tr>
         </thead>
-  
         <tbody>
           {% for board in boards %}
           <tr onclick="location.href='/board/{{ board.id }}/'">
@@ -87,12 +86,12 @@
             <td>{{ board.age }}</td>
             <td>{{ board.headcount }}</td>
             <td>{{ board.state }}</td>
-
           </tr>
           {% endfor %}
           </tbody>
       </table>
     </div>
+  </div>
   </div>
 
 
@@ -136,9 +135,11 @@
   <div style="margin-left : 5%;">
   <div class="row">
     <div class="col-12">
+      {% if user.is_authenticated %}
       <button  class="btn btn-dark ">
         <a href="{% url 'article:board_write' %}">글쓰기</a>
       </button>
+      {% endif %}
       <!-- <button class="btn btn-primary", action="{% url 'article:board_write' %}">글쓰기</button> -->
 
     </div>
