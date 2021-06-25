@@ -9,7 +9,10 @@
       <form action="." method="POST" novalidate="novalidate">
           <div class="row row-cols-4">
               <div class="a">
-                  <select class="form-control search-slt" id="category" placeholder='카테고리'>
+                  <select class="form-control search-slt" name='category' id="category" placeholder='카테고리'>
+                      <!-- {% for board in Article %}
+                      <option>{{board.category}}</option>
+                      {% endfor %} -->
                       <option>활동</option>
                       <option disabled>--야외 스포츠--</option>
                       <option value="풋살">풋살</option>
@@ -49,7 +52,7 @@
               </select>
             </div>
             <div class="a">
-                <button type="button" class="btn btn-danger wrn-btn">Search</button>
+                <button type="submit" class="btn btn-danger wrn-btn">Search</button>
             </div>
           </div>
         </div>
