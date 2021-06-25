@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404,redirect
 from django.core.paginator import Paginator
 from django.utils import timezone
 from django.urls import reverse
+from django.db.models import Q
 from .models import Article, Comment
 from .forms import ArticleForm
 from django.contrib.auth import get_user_model
@@ -86,6 +87,37 @@ def board_delete(request, id):
     
     return redirect('/board/list/')
 
+def get(self, request):
+        all_boards = Article.objects.filter(query)
+        category        = request.GET.get('category', None)
+        sub_category    = request.GET.get('subcategory', None)
+        detail_category = request.GET.get('detailcategory', None)
+        color           = request.GET.getlist('color', None)
+        size            = request.GET.getlist('size', None)
+        
+        if category:
+            products = Product.objects.filter(detail_category__sub_category__category=category)
+
+        if sub_category:
+            products = products.filter(detail_category__sub_category=sub_category)
+
+        if detail_category:
+            products = products.filter(detail_category=detail_category)
+
+        if color:
+            products = products.filter(productoption__color__in=color).distinct()
+
+        if size:
+            products = products.filter(productoption__size__in=size).distinct()
+
+
+
+def board_list(request):
+    all_boards = Article.objects.all().order_by('-id')
+    page        = int(request.GET.get('p', 1))
+    pagenator   = Paginator(all_boards, 5)
+    boards      = pagenator.get_page(page)
+    return render(request, 'index/board_list.html', {"boards" : boards})
 # 댓글 생성
 
 # def add_comment_to_board(request, id):
@@ -135,3 +167,5 @@ def board_delete(request, id):
         
     # form = ArticleForm()
     # return render(request, 'index/board_write.html', {'form' : form})
+
+
