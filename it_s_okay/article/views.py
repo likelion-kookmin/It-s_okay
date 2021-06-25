@@ -16,7 +16,7 @@ from django.views.decorators.csrf import csrf_exempt
 def board_list(request):
     all_boards = Article.objects.all().order_by('-id')
     page        = int(request.GET.get('p', 1))
-    pagenator   = Paginator(all_boards, 10)
+    pagenator   = Paginator(all_boards, 5)
     boards      = pagenator.get_page(page)
     return render(request, 'index/board_list.html', {"boards" : boards})
 
@@ -48,7 +48,6 @@ def board_write(request):
             article.area = form.cleaned_data['area']
             # article.date = form.cleaned_data['date']
             article.age = form.cleaned_data['age']
-            article.area = form.cleaned_data['area']
             article.headcount = form.cleaned_data['headcount']
             article.state = form.cleaned_data['state']
             article.body = form.cleaned_data['body']
@@ -70,7 +69,9 @@ def board_write(request):
 def board_detail(request, id):
     board = get_object_or_404(Article, id=id)
     form = ArticleForm(instance = board)
-    
+
+
+
     return render(request, 'index/board_detail.html', {'form':form,'board':board})
 
 # 보드 수정

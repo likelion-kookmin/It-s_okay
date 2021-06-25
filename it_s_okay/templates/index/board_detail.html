@@ -1,29 +1,29 @@
 {% extends "main/base.html" %}
 
 {% block content %}
-{% load bootstrap4 %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/board_detail.css" %}" type="text/css" />
 
 
   <!--제목,분류,작성일-->
   
     <!--작성자, 조회수-->
-    <div class="listdiv">
-      <div class="list-inside">
-        <div class="form-group">
-          <!-- <label for="title">제목</label>
+    <div class="ArticleContentBox">
+          <div class="article_header"><b>{{ board.title }}</b></div>
+          <p style="border-style: outset;border-color: black;"></p>
           <input type="text" class="form-control" id="title" value="{{ board.title }}" readonly />
           <label for="contents">내용</label>
-          <textarea class="form-control" readonly>{{ board.body }}</textarea> -->
-          {% bootstrap_form form %}
+          <textarea class="form-control" readonly>{{ board.body }}</textarea>
 
-        </div>
-        <button class="btn btn-dark" onclick="location.href='/board/{{ board.id }}/edit'">수정</button>
-        <button class="btn btn-dark" onclick="location.href='/board/{{ board.id }}/delete/'">삭제</button>
+        {% if user == board.writer %}
+        <button class="btn btn-dark" onclick="location.href='/board/{{ board.id }}/edit'">수정하기</button>
+        <button class="btn btn-dark" onclick="location.href='/board/{{ board.id }}/delete/'">삭제하기</button>
+        {% endif %}
+
         <button class="btn btn-dark">
         <a href="{% url 'article:board_list' %}">돌아가기</a>
         </button>
-      </div>
-      
     </div>
 
 
@@ -32,5 +32,6 @@
       
 
         
+  {% endblock %}
   
   {% endblock %}

@@ -1,0 +1,355 @@
+
+body{
+    margin: 0;
+<<<<<<< HEAD:it_s_okay/templates/static/base.css
+    font-family: Apple SD Gothic Neo;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 36px;
+    align-items: center;
+    text-align: center;
+    color: #0B0A0A;
+=======
+    font-family:'BinggraeSamanco'!important;
+    font-weight: normal;
+    /* font-style: normal;"Comic Sans MS", "Comic Sans" !important; */
+    background: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+    /* min-height: 100vh; */
+    /* background-color: #485861; */
+    color: #000000;
+    font-size: 11px;
+    line-height: 1.4;
+    font-weight: 500;
+>>>>>>> 76604e4b5248f1c9df64429199dc3c06b2ece339:it_s_okay/templates/static/css/base.css
+    /* height: 100vh;
+    width: 100vw; */
+    /* 스크롤 제거 */
+    /* overflow-x: hidden;
+    overflow-y: hidden; */
+} 
+
+
+
+
+
+.navbar-collapse{
+  background-color: #575454;
+  
+}
+
+.nav-item{
+  margin-right: 25px;
+  margin-left: 20px;
+  font-family: Apple SD Gothic Neo;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 36px;
+  align-items: center;
+  text-align: center;
+  color: #0B0A0A;
+}
+
+<<<<<<< HEAD:it_s_okay/templates/static/base.css
+=======
+@font-face {
+  font-family: 'BinggraeSamanco';
+  src: local('BinggraeSamanco'),
+      url('/static/fonts/BinggraeSamanco.ttf') format("truetype");
+}
+>>>>>>> 76604e4b5248f1c9df64429199dc3c06b2ece339:it_s_okay/templates/static/css/base.css
+
+.wrap_content{
+  /* height: 100%; */
+  
+  width: 100%;
+  /* height: 90vh; */
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+
+
+.text-area{
+    background-color: #485861;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+.volume {
+  font-size: 30px;
+  margin-bottom: 85px;
+}
+
+h1 {
+  margin: 0;
+}
+
+.text-area h1 {
+  font-size: 30px;
+  line-height: 30px;
+  font-weight: normal;
+  line-height: 1;
+  margin-bottom: 22px;
+}
+
+p {
+  line-height: 14px;
+}
+
+#circle-wrapper {
+  position: relative;
+  margin-left: 70px;
+  margin-top: 42px;
+  height: 210px;
+}
+
+.circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.circle:nth-child(1) {
+  background-color: transparent;
+  border: 1px solid black;
+  opacity: 0.2;
+  box-sizing: border-box;
+}
+
+.circle:nth-child(2) {
+  background-color: #ffc000;
+  left: 40px;
+}
+
+.circle:nth-child(3) {
+  background-color: #fedd15;
+  left: 80px;
+}
+
+.line {
+  width: 46px;
+  height: 1px;
+  background-color: #ffe6cf;
+  position: relative;
+  top: -7px;
+  display: inline-block;
+  opacity: 0.2;
+}
+
+.FL:first-letter {
+  font-size: 100px;
+}
+
+.hanbun {
+  font-size: 15px;
+}
+
+.footer{
+    background-color:#AFC1ED;
+    height: 100px;
+    margin-top: 10%;
+}
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+
+
+.listdiv{
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: #6783AA;
+  padding: 2%;
+}
+
+.list-inside{
+  
+  height: 100%;
+  
+}
+
+.search-sec{
+  padding: 2rem;
+}
+
+.search-sec-list{
+  margin-top: 3%;
+  padding: 2rem;
+  background-color: #3F6489;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.search-slt{
+  display: block;
+  width: 100%;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: #55595c;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  height: calc(3rem + 2px) !important;
+  border-radius:0;
+}
+.wrn-btn{
+  width: 100%;
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: capitalize;
+  height: calc(3rem + 2px) !important;
+  border-radius:0;
+}
+
+/* Login */
+
+.user_card {
+  height: 400px;
+  width: 350px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background: #60A2BC;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+
+}
+.brand_logo_container {
+  position: absolute;
+  height: 170px;
+  width: 170px;
+  top: -75px;
+  border-radius: 50%;
+  background: #60a3bc;
+  padding: 10px;
+  text-align: center;
+}
+.brand_logo {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+.form_container {
+  margin-top: 100px;
+}
+.login_btn {
+  width: 100%;
+  background: #c0392b !important;
+  color: white !important;
+}
+.login_btn:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+.login_container {
+  padding: 0 2rem;
+}
+.input-group-text {
+  background: #c0392b !important;
+  color: white !important;
+  border: 0 !important;
+  border-radius: 0.25rem 0 0 0.25rem !important;
+}
+.input_user,
+.input_pass:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+  background-color: #c0392b !important;
+}
+
+.a{
+  width : 20%;
+}
+
+/* Footer */
+
+.footer-basic {
+  padding:40px 0;
+  color:#4b4c4d;
+  background-color:#AFC1ED;
+  height: 100px;
+  margin-top: 10%;
+}
+
+.footer-basic ul {
+  padding:0;
+  list-style:none;
+  text-align:center;
+  font-size:18px;
+  line-height:1.6;
+  margin-bottom:0;
+}
+
+.footer-basic li {
+  padding:0 10px;
+}
+
+.footer-basic ul a {
+  color:inherit;
+  text-decoration:none;
+  opacity:0.8;
+}
+
+.footer-basic ul a:hover {
+  opacity:1;
+}
+
+.footer-basic .social {
+  text-align:center;
+  padding-bottom:25px;
+}
+
+.footer-basic .social > a {
+  font-size:24px;
+  width:40px;
+  height:40px;
+  line-height:40px;
+  display:inline-block;
+  text-align:center;
+  border-radius:50%;
+  border:1px solid #ccc;
+  margin:0 8px;
+  color:inherit;
+  opacity:0.75;
+}
+
+.footer-basic .social > a:hover {
+  opacity:0.9;
+}
+
+.footer-basic .copyright {
+  margin-top:15px;
+  text-align:center;
+  font-size:13px;
+  color:#aaa;
+  margin-bottom:0;
+}
+
+
+/* Media */
+@media (min-width: 992px){
+  .search-sec{
+      position: relative;
+      
+      background: rgba(26, 70, 104, 0.51);
+  }
+}
+
+@media (max-width: 992px){
+  .search-sec{
+      background: #1A4668;
+  }
+}

@@ -1,6 +1,7 @@
 {% extends 'main/base.html' %}
 {% block content %}
 
+<div style="margin-top: 10%;">
 <div class="container h-100">
     <div class="d-flex justify-content-center h-100">
         <div class="user_card">
@@ -35,13 +36,15 @@
                         </div>
                 </form>
             </div>
-    
             <div class="mt-4">
                 <div class="d-flex justify-content-center links">
                     아이디가 없으신가요? <a href="{% url 'user:register' %}" class="ml-2">회원가입</a>
                 </div>
 
             </div>
+            </div>
+    
+
         </div>
     </div>
 </div>

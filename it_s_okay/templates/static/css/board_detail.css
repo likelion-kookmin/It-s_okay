@@ -1,0 +1,26 @@
+.fuck{
+    width:40%;
+    height:30%;
+    background-color:aqua;
+}
+
+.ArticleContentBox{
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: #6783AA;
+    border-radius: 6px;
+    padding: 2%;
+    border: 1px solid var(--skinLayoutBorder);
+
+}
+
+.article_header{
+    position: relative;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--skinLayoutBorder);
+    font-weight: bolder;
+    font-size: 2em;
+    text-align: center;
+}
