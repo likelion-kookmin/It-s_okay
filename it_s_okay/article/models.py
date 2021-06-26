@@ -4,11 +4,17 @@ from category.models import Large_category, Medium_category, Small_category
 from django.contrib.auth import get_user_model
 from user.models import *
 
+class Category(models.Model):
+    name = models.CharField(max_length=50, verbose_name='카테고리 이름')
+
+    def __str__(self) -> str:
+        return self.title
 
 class Article(models.Model): 
     writer = models.ForeignKey('user.Normaluser',on_delete=models.CASCADE, verbose_name='작성자')
     title = models.CharField(max_length=100, verbose_name='제목')
     category = models.CharField(max_length=20,  default=1, verbose_name='카테고리')
+    # category = models.ForeignKey(Category, verbose_name='카테고리', null=True, blank=True, on_delete=models.CASCADE)
     area = models.CharField(max_length=20, verbose_name='위치')
     age = models.CharField(max_length=20,  default=1, verbose_name='연령대')
     meeting_date = models.CharField(max_length=20, verbose_name='만남 시간')
@@ -32,6 +38,16 @@ class Article(models.Model):
         verbose_name_plural = '쿨괜 게시판'
     
 
+
+class Comment(models.Model):
+    article = models.ForeignKey(Article, on_delete=models.CASCADE, null=True)
+    comment_user = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, null=True, blank=True, related_name='comments')
+    text = models.TextField(null=True)
+    created = models.DateTimeField(auto_now_add=True, null=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return (self.comment_user.username if self.comment_user else "무명")+ "의 댓글"    
 
 # class Comment(models.Model):
 #     writer = models.ForeignKey('user.Normaluser',on_delete=models.CASCADE, verbose_name='댓글 작성자')
@@ -67,17 +83,17 @@ class Article(models.Model):
 #         verbose_name = '쿨괜 게시판_댓글'
 #         verbose_name_plural = '쿨괜 게시판_댓글'
 
-class Comment(models.Model):
-    post = models.ForeignKey(Article, on_delete = models.CASCADE, default="")
-    user = models.ForeignKey(Normaluser, on_delete = models.CASCADE, default="")
-    content = models.TextField(default="")
+# class Comment(models.Model):
+#     post = models.ForeignKey(Article, on_delete = models.CASCADE, default="")
+#     user = models.ForeignKey(Normaluser, on_delete = models.CASCADE, default="")
+#     textfield = models.TextField(default="")
 
-    def __str__(self):
-        return self.text
+#     def __str__(self):
+#         return self.text
     
-    class Meta:
-        db_table = 'cool_board_comment'
-        verbose_name = '쿨괜 게시판_댓글'
-        verbose_name_plural = '쿨괜 게시판_댓글'
+#     class Meta:
+#         db_table = 'cool_board_comment'
+#         verbose_name = '쿨괜 게시판_댓글'
+#         verbose_name_plural = '쿨괜 게시판_댓글'
 
 

@@ -8,4 +8,6 @@ class SearchAdmin(admin.ModelAdmin):
     search_fields = ['title']
 
 admin.site.register(Article, BoardAdmin)
+admin.site.register(Comment)
+
 

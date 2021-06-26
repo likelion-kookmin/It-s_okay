@@ -4,7 +4,7 @@ from django.utils import timezone
 from django.urls import reverse
 from django.db.models import Q
 from .models import Article, Comment
-from .forms import ArticleForm
+from .forms import ArticleForm, CommentForm
 from django.contrib.auth import get_user_model
 from user.models import Normaluser
 from django.views.decorators.csrf import csrf_exempt
@@ -44,11 +44,43 @@ def board_write(request):
 
 def board_detail(request, id):
     board = get_object_or_404(Article, id=id)
+    # comments = Comment.objects.filter(id=id)
+    comments = Comment.objects.all()
+
+
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST)
+        
+        if comment_form.is_valid():
+            comments = comment_form.save(commit=False)
+            text = comment_form.cleaned_data['text']
+            comments.comment_user = request.user
+            comments.save()
+            print(text)
+            return redirect('/board/' + str(board.id))
+
+    else:
+        comment_form = CommentForm()
+
+    context={
+        'board':board,
+        'comments':comments,
+        'comment_form':comment_form
+    }
+    # form_class = CommentForm
+    # form = form_class(request.POST or None)
 
     # comment = get_object_or_404(Comment, id=board.id)
 
+    # if request.method == 'POST':
+    #     form = CommentForm(request.POST)
+    #     if form.is_valid():
+    #         comment = form.save(commit=False)
+    #         comment.author = request.user
+    #         comment.save()
+    #         return redirect('/board/' + str(board.id))
 
-    return render(request, 'index/board_detail.html', {'board':board})
+    return render(request, 'index/board_detail.html', context)
 
 
 # 보드 수정
@@ -86,6 +118,30 @@ def board_delete(request, id):
     
     
     return redirect('/board/list/')
+
+# def comment(request, board_id):
+
+#     if request.method == "POST":
+#         form = CommentForm(request.POST)
+#         if form.is_valid():
+#             comment = form.save(commit=False)
+#             comment.author = request.user
+#             form.instance.board_id = board_id
+#             comment.save()
+#             print(board_id)
+#             return redirect('/board/' + str(board_id))
+    
+#     form = CommentForm()              
+#     return render(request, 'index/board_detail.html', {'form' : form})
+
+    # return HttpResponseRedirect(reverse_lazy('board:detail', args=[document_id]))
+
+# # get_absolute_url을 설정해 놓았을 시(in models)
+#     def get_absolute_url(self):
+#         return reverse('board:detail', args=[self.id])
+
+#  제일 마지막 문장    return redirect(document)로  대체가능
+
 
 
 # 댓글 생성
