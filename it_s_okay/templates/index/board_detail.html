@@ -95,10 +95,29 @@
             </div>
             <div class='comment_wrapper'>
               <div>
-                <!-- 댓글 <i class="iconify" data-icon="akar-icons:comment"></i> -->
+                댓글 <i class="iconify" data-icon="akar-icons:comment"></i>
               </div>
-              <div class='fontfont'>
-                <div id="disqus_thread"></div>
+              {% for comment in comments %}
+              <div>
+                {{comment.comment_user}} :
+                {{comment.text}}
+              </div>
+              {% endfor %}
+              <!-- Comments Form -->
+              <div class="card my-4">
+                  <h5 class="card-header">Leave a Comment:</h5>
+                  <div class="card-body">
+                      <form method="POST">
+                          {% csrf_token %}
+                          <div class="form-group">{{ comment_form }}</div>
+                          <button type="submit" class="btn btn-dark">Submit</button>
+                      </form>
+                  </div>
+              </div>
+              <div class>
+
+              </div>
+                <!-- <div id="disqus_thread"></div>
 <script>
     /**
     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
@@ -116,13 +135,12 @@
     (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"></a></noscript>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"></a></noscript> -->
               </div>
-              <div>
-              </div>
+
               
               </div>
-            </div>
+            
             
           
           <div>
@@ -135,6 +153,7 @@
               </button>
           </div>
         </div>
+      </div>
 
 
 
