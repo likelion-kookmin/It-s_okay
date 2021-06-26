@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404,redirect
 from django.core.paginator import Paginator
 from django.utils import timezone
 from django.urls import reverse
+from django.db.models import Q
 from .models import Article, Comment
 from .forms import ArticleForm
 from django.contrib.auth import get_user_model
@@ -86,6 +87,7 @@ def board_delete(request, id):
     
     return redirect('/board/list/')
 
+
 # 댓글 생성
 
 # def add_comment_to_board(request, id):
@@ -135,3 +137,5 @@ def board_delete(request, id):
         
     # form = ArticleForm()
     # return render(request, 'index/board_write.html', {'form' : form})
+
+

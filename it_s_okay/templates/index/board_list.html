@@ -6,54 +6,53 @@
 <div class = "list-inside">
 <section class="search-sec">
   <div class="container">
-      <form action="#" method="post" novalidate="novalidate">
-          <div class="row row-cols-5">
+      <form action="." method="POST" novalidate="novalidate">
+          <div class="row row-cols-4">
               <div class="a">
-                  <select class="form-control search-slt" id="exampleFormControlSelect1">
+                  <select class="form-control search-slt" name='category' id="category" placeholder='카테고리'>
+                      <!-- {% for board in Article %}
+                      <option>{{board.category}}</option>
+                      {% endfor %} -->
                       <option>활동</option>
-                      <option>Example one.</option>
-                      <option>Example one</option>
-                      <option>Example one</option>
-                      <option>Example one</option>
-                      <option>Example one</option>
-                      <option>Example one</option>
+                      <option disabled>--야외 스포츠--</option>
+                      <option value="풋살">풋살</option>
+                      <option value="축구">축구</option>
+                      <option value="농구">농구</option>
+                      <option value="야구">야구</option>
+                      <option value="배드민턴">배드민턴</option>
+                      <option disabled>--문화--</option>
+                      <option value="영화">영화</option>
+                      <option value="전시회">전시회</option>
+                      <option value="독서모임">독서모임</option>
+                      <option disabled>--엔터테이먼트--</option>
+                      <option value="방탈출">방탈출</option>
+                      <option value="보드게임">보드게임</option>
+                      <option disabled>--스터디--</option>
+                      <option value="스터디">스터디</option>
+                      <option disabled>--온라인 활동--</option>
+                      <option value="게임">게임</option>
+                      <option value="온라인 스터디">온라인 스터디</option>
                   </select>
               </div>
               <div class="a">
-                <select class="form-control search-slt" id="exampleFormControlSelect1">
-                    <option>연령대</option>
-                    <option>Example one</option>
-                    <option>Example one</option>
-                    <option>Example one</option>
-                    <option>Example one</option>
-                    <option>Example one</option>
-                    <option>Example one</option>
+                <select class="form-control search-slt" id="age" placeholder='연령대'>
+                    <option>모집 희망 연령대</option>
+                    <option value="10대">10대</option>
+                    <option value="20대">20대</option>
+                    <option value="30대">30대</option>
+                    <option value="40대">40대</option>
+                    <option value="50대 이상">50대 이상</option>
                 </select>
             </div>
             <div class="a">
-              <select class="form-control search-slt" id="exampleFormControlSelect1">
-                  <option>모집인원</option>
-                  <option>Example one</option>
-                  <option>Example one</option>
-                  <option>Example one</option>
-                  <option>Example one</option>
-                  <option>Example one</option>
-                  <option>Example one</option>
+              <select class="form-control search-slt" id="state" placeholder='모집 상태'>
+                  <option>모집 상태</option>
+                  <option value="모집중">모집중</option>
+                  <option value="모집 완료">모집 완료</option>
               </select>
             </div>
             <div class="a">
-              <select class="form-control search-slt" id="exampleFormControlSelect1">
-                  <option>모집상태</option>
-                  <option>Example one</option>
-                  <option>Example one</option>
-                  <option>Example one</option>
-                  <option>Example one</option>
-                  <option>Example one</option>
-                  <option>Example one</option>
-              </select>
-            </div>
-            <div class="a">
-                <button type="button" class="btn btn-danger wrn-btn">Search</button>
+                <button type="submit" class="btn btn-danger wrn-btn">Search</button>
             </div>
           </div>
         </div>

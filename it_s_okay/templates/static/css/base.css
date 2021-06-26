@@ -23,6 +23,11 @@ src: local('BinggraeSamanco'),
     url('/static/fonts/BinggraeSamanco.ttf') format("truetype");
 }
 
+select option:disabled {
+  color: #000;
+  font-weight: bold;
+}
+
 .center{
 text-align: center;
 }
