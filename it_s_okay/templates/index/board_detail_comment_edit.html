@@ -99,6 +99,7 @@
               </div>
               {% for comment in comments %}
               <div>
+                {{comment.author}}
                 {% if comment.comment_user == user %}
                 <div class="card my-4">
                   <h5 class="card-header">Leave a Comment:</h5>
@@ -111,7 +112,7 @@
                   </div>
               </div>
               {% else %}
-              {{comment.comment_user}} :
+              {{comment.author}} :
               {{comment.text}}
                   {% endif %}
               </div>

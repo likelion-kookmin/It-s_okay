@@ -40,9 +40,9 @@ def board_write(request):
 
 # 보드 디테일 / 댓글 생성
 
-def board_detail(request, id):
-    board = get_object_or_404(Article, id=id)
-    comments = Comment.objects.all()
+def board_detail(request, board_id):
+    board = get_object_or_404(Article, id=board_id)
+    comments = Comment.objects.filter(board=board_id)
 
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
@@ -50,7 +50,10 @@ def board_detail(request, id):
         if comment_form.is_valid():
             comments = comment_form.save(commit=False)
             text = comment_form.cleaned_data['text']
-            comments.comment_user = request.user
+            comments.board = board
+            comments.created = timezone.now()
+            comments.article_id = board_id
+            comments.author = request.user
             comments.save()
             print(text)
             return redirect('/board/' + str(board.id))
@@ -64,13 +67,30 @@ def board_detail(request, id):
         'comment_form':comment_form
     }
 
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST)
+
 
     return render(request, 'index/board_detail.html', context)
 
+# def board_detail(request, board_id):
+#     board = get_object_or_404(Article, id=board_id)
+
+#     if request.method == 'POST':
+#         comment_form = CommentForm(request.POST)
+#         comment_form.instance.author_id = request.user.id
+#         comment_form.instance.board_id = board_id
+#         if comment_form.is_valid():
+#             comment = comment_form.save()
+
+#     comment_form = CommentForm()
+#     comments = board.comment.all()
+
+#     return render(request, 'index/board_detail.html', {'object':comments,"comment_form":comment_form,"comments":comments})
 # 보드 수정
 
-def board_edit(request, id):
-    board = get_object_or_404(Article, id=id)
+def board_edit(request, board_id):
+    board = get_object_or_404(Article, id=board_id)
     if request.method == "POST":
             form = ArticleForm(request.POST, request.FILES)
             if form.is_valid():
@@ -94,7 +114,7 @@ def board_edit(request, id):
 
 # 보드 삭제
 
-def board_delete(request, id):
+def board_delete(request, board_id):
     board = Article.objects.get(id=id)
 
     if request.method == "POST":

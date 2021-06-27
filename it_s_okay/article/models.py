@@ -4,11 +4,6 @@ from category.models import Large_category, Medium_category, Small_category
 from django.contrib.auth import get_user_model
 from user.models import *
 
-class Category(models.Model):
-    name = models.CharField(max_length=50, verbose_name='카테고리 이름')
-
-    def __str__(self) -> str:
-        return self.title
 
 class Article(models.Model): 
     writer = models.ForeignKey('user.Normaluser',on_delete=models.CASCADE, verbose_name='작성자')
@@ -40,14 +35,14 @@ class Article(models.Model):
 
 
 class Comment(models.Model):
-    article = models.ForeignKey(Article, on_delete=models.CASCADE, null=True)
-    comment_user = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, null=True, blank=True, related_name='comments')
+    board = models.ForeignKey(Article, on_delete=models.CASCADE, null=True)
+    author = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, null=True, blank=True, related_name='comments')
     text = models.CharField(max_length=100, null=True)
     created = models.DateTimeField(auto_now_add=True, null=True)
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return (self.comment_user.username if self.comment_user else "무명")+ "의 댓글"    
+        return (self.author.username if self.author else "무명")+ "의 댓글"    
 
 # class Comment(models.Model):
 #     writer = models.ForeignKey('user.Normaluser',on_delete=models.CASCADE, verbose_name='댓글 작성자')
