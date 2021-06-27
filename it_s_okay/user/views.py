@@ -99,3 +99,6 @@ def logout(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
+
+def mypage(request):
+    return render(request, "user/mypage.html")
