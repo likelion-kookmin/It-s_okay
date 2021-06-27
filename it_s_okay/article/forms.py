@@ -133,22 +133,25 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['text']
-        widgets = {
-            'text': forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'cols': 40})
-        }
-
-    text = forms.CharField(
-    error_messages={
-        'required': '댓글을 입력해주세요.'
-    },
-    widget = forms.Textarea(attrs={'autocomplete':'off'}),
-    label = "댓글"
-    )
-
+        # widgets = {
+        #     'text': forms.CharField
+        # }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['text'].label = "댓글"
+        self.fields['text'].label = "댓글"    
+    # text = forms.CharField(
+    # error_messages={
+    #     'required': '댓글을 입력해주세요.'
+    # },
+    # max_length=50,
+    # label = "댓글"
+    # )
+
+
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     self.fields['text'].label = "댓글"
 # class CommentForm(forms.ModelForm):
 #     class Meta:
 #         model = Comment

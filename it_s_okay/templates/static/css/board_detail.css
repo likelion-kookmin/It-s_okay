@@ -72,6 +72,18 @@
 
 }
 
+.iconbox-headcount{
+    font-size: 0.5em;
+    float: left;
+    height: 3%;
+    width: 12%;
+    margin-right: 2%;
+    background-color: #d6b6d8b1;
+    padding: 1%;
+    border-radius: 50px;
+}
+
+
 .article_kakao{
     background-color: #AA9B67; 
     /* padding: 0.5%; */

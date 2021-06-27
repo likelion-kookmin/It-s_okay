@@ -65,9 +65,6 @@
               {% else %}
               <div class='iconbox-state'>모집 완료 <i class="fas fa-users-slash"></i></i></div>
               {% endif %}
-
-              <div class='iconbox-headcount'>모집 인원 : {{board.headcount}} <i class="iconify" data-icon="cil:people"></i>
-              </div>
             </div>
           </div>
 
@@ -102,21 +99,8 @@
               </div>
               {% for comment in comments %}
               <div>
-                {{comment.comment_user}} :
-                {{comment.text}}
-                {% if user == comment.comment_user %}
-                <button class="btn btn-dark">
-                  <a href="{% url 'article:comment_edit' board.id comment.id %}">수정하기</a>
-                  </button>
-                <button class="btn btn-dark">
-                  <a href="{% url 'article:comment_delete' board.id comment.id %}">삭제하기</a>
-                  </button>  
-                            
-                  {% endif %}
-              </div>
-              {% endfor %}
-              <!-- Comments Form -->
-              <div class="card my-4">
+                {% if comment.comment_user == user %}
+                <div class="card my-4">
                   <h5 class="card-header">Leave a Comment:</h5>
                   <div class="card-body">
                       <form method="POST">
@@ -126,6 +110,23 @@
                       </form>
                   </div>
               </div>
+              {% else %}
+              {{comment.comment_user}} :
+              {{comment.text}}
+                  {% endif %}
+              </div>
+              {% endfor %}
+              <!-- Comments Form -->
+              <!-- <div class="card my-4">
+                  <h5 class="card-header">Leave a Comment:</h5>
+                  <div class="card-body">
+                      <form method="POST">
+                          {% csrf_token %}
+                          <div class="form-group">{{ comment_form }}</div>
+                          <button type="submit" class="btn btn-dark">Submit</button>
+                      </form>
+                  </div>
+              </div> -->
               <div class>
 
               </div>
