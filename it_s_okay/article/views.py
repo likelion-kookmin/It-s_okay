@@ -102,7 +102,7 @@ def board_edit(request, board_id):
 # 보드 삭제
 
 def board_delete(request, board_id):
-    board = Article.objects.get(id=id)
+    board = Article.objects.get(id=board_id)
 
     if request.method == "POST":
         board.delete()
