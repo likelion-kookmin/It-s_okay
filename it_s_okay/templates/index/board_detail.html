@@ -97,35 +97,36 @@
             <p style="border-style: groove;border-color: #1465AA;border-width: thin;"></p>
             </div>
             <div class='comment_wrapper'>
-              <div>
+              <div class='comment_head'>
                 댓글 <i class="iconify" data-icon="akar-icons:comment"></i>
               </div>
-              <!-- {{board.title}}
-              {{comments.article}}
-              {{comments.author}}
-              {{comments}} -->
               {% for comment in comments %}
-              <div>
+              {% if comment.author == user %}
+              <div class='comment_box'>
                 {{comment.author}} : {{comment.text}}
-                
                 <button class="btn btn-dark">
                   <a href="{% url 'article:comment_edit' board.id comment.id %}">수정하기</a>
                   </button>
                 <button class="btn btn-dark">
                   <a href="{% url 'article:comment_delete' board.id comment.id %}">삭제하기</a>
                   </button>  
-                            
+                <p style="border-style: groove;border-color: #1465AA;border-width: thin;"></p>
               </div>
+              {% else %}
+              <div class='comment_box'>
+                {{comment.author}} : {{comment.text}}
+                <p style="border-style: groove;border-color: #1465AA;border-width: thin;"></p>
+              </div>
+              {% endif %}
               {% endfor %}
               
-              <!-- Comments Form -->
               <div class="card my-4">
-                  <h5 class="card-header">Leave a Comment:</h5>
-                  <div class="card-body">
+                  <div class="comment_form_head">댓글을 남겨보세요!</div>
+                  <div class="comment_form_body">
                       <form method="POST">
                           {% csrf_token %}
                           <div class="form-group">{{ comment_form }}</div>
-                          <button type="submit" class="btn btn-dark">Submit</button>
+                          <button type="submit" class="btn btn-dark">댓글 작성</button>
                       </form>
                   </div>
               </div>

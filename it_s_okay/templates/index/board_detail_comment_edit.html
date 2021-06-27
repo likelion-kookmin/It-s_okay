@@ -98,36 +98,26 @@
                 댓글 <i class="iconify" data-icon="akar-icons:comment"></i>
               </div>
               {% for comment in comments %}
-              <div>
-                {{comment.author}}
-                {% if comment.comment_user == user %}
-                <div class="card my-4">
-                  <h5 class="card-header">Leave a Comment:</h5>
-                  <div class="card-body">
-                      <form method="POST">
-                          {% csrf_token %}
-                          <div class="form-group">{{ comment_form }}</div>
-                          <button type="submit" class="btn btn-dark">Submit</button>
-                      </form>
-                  </div>
+              {% if comment.id == my_comment.id %}
+            <div class="card my-4">
+              <div class="comment_form_head">댓글 수정</div>
+              <div class="comment_form_body">
+                  <form method="POST">
+                      {% csrf_token %}
+                      <div class="form-group">{{ comment_form }}</div>
+                      <button type="submit" class="btn btn-dark">수정 완료</button>
+                  </form>
               </div>
+            </div>
               {% else %}
-              {{comment.author}} :
-              {{comment.text}}
-                  {% endif %}
+              <div class='comment_box'>
+                {{comment.author}} : {{comment.text}}
+                <p style="border-style: groove;border-color: #1465AA;border-width: thin;"></p>
               </div>
+              {% endif %}
               {% endfor %}
               <!-- Comments Form -->
-              <!-- <div class="card my-4">
-                  <h5 class="card-header">Leave a Comment:</h5>
-                  <div class="card-body">
-                      <form method="POST">
-                          {% csrf_token %}
-                          <div class="form-group">{{ comment_form }}</div>
-                          <button type="submit" class="btn btn-dark">Submit</button>
-                      </form>
-                  </div>
-              </div> -->
+
               <div class>
 
               </div>
