@@ -73,20 +73,7 @@ def board_detail(request, board_id):
 
     return render(request, 'index/board_detail.html', context)
 
-# def board_detail(request, board_id):
-#     board = get_object_or_404(Article, id=board_id)
 
-#     if request.method == 'POST':
-#         comment_form = CommentForm(request.POST)
-#         comment_form.instance.author_id = request.user.id
-#         comment_form.instance.board_id = board_id
-#         if comment_form.is_valid():
-#             comment = comment_form.save()
-
-#     comment_form = CommentForm()
-#     comments = board.comment.all()
-
-#     return render(request, 'index/board_detail.html', {'object':comments,"comment_form":comment_form,"comments":comments})
 # 보드 수정
 
 def board_edit(request, board_id):
@@ -129,10 +116,10 @@ def board_delete(request, board_id):
 
 def comment_edit(request, board_id, comment_id):
     board = get_object_or_404(Article, id=board_id)
-    comments = Comment.objects.all()
-    # comment_id = comment_id
+    comments = Comment.objects.filter(board=board_id)
     my_comment = Comment.objects.get(id=comment_id)
     comment_form = CommentForm(instance=my_comment)
+
     if request.method == "POST":
         update_comment_form = CommentForm(request.POST, instance=my_comment)
         if update_comment_form.is_valid():
@@ -150,7 +137,7 @@ def comment_edit(request, board_id, comment_id):
         'board':board,
         'comments':comments,
         'comment_form':comment_form,
-        # 'comment_id':comment_id
+        'my_comment':my_comment,
     }
     return render(request, 'index/board_detail_comment_edit.html', context)
 
@@ -160,7 +147,7 @@ def comment_delete(request, board_id, comment_id):
     board = Article.objects.get(id=board_id)
     comment = Comment.objects.get(id=comment_id)
 
-    if request.user != comment.comment_user :
+    if request.user != comment.author :
         messages.warning(request, '권한없음')
         return redirect('/board/'+str(board.id))
     
