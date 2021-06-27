@@ -100,11 +100,14 @@
               <div>
                 댓글 <i class="iconify" data-icon="akar-icons:comment"></i>
               </div>
+              <!-- {{board.title}}
+              {{comments.article}}
+              {{comments.author}}
+              {{comments}} -->
               {% for comment in comments %}
               <div>
-                {{comment.comment_user}} :
-                {{comment.text}}
-                {% if user == comment.comment_user %}
+                {{comment.author}} : {{comment.text}}
+                
                 <button class="btn btn-dark">
                   <a href="{% url 'article:comment_edit' board.id comment.id %}">수정하기</a>
                   </button>
@@ -112,9 +115,9 @@
                   <a href="{% url 'article:comment_delete' board.id comment.id %}">삭제하기</a>
                   </button>  
                             
-                  {% endif %}
               </div>
               {% endfor %}
+              
               <!-- Comments Form -->
               <div class="card my-4">
                   <h5 class="card-header">Leave a Comment:</h5>

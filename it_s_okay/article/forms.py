@@ -137,9 +137,10 @@ class CommentForm(forms.ModelForm):
         #     'text': forms.CharField
         # }
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['text'].label = "댓글"    
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     self.fields['text'].label = "댓글"
+
     # text = forms.CharField(
     # error_messages={
     #     'required': '댓글을 입력해주세요.'
