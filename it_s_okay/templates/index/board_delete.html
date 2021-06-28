@@ -1,0 +1,22 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/board_detail.css" %}" type="text/css" />
+{% endblock %}
+
+{% load bootstrap4 %}
+  
+    <div class="ArticleContentBox" role='alert'>
+      <div>정말로 해당 게시글을 지우실 건가요?</div>
+      <div>
+        <form action="" method ="post">
+          {% csrf_token %}
+          <input type="submit" value="Delete OK">
+      </form>
+      </div>
+    </div>
+
+  {% endblock %}

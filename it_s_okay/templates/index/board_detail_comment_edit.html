@@ -8,7 +8,11 @@
 {% endblock %}
 
 {% load bootstrap4 %}
+
+
+  <!--제목,분류,작성일-->
   
+    <!--작성자, 조회수-->
     <div class="ArticleContentBox">
 
           <div class="article_header">
@@ -61,9 +65,6 @@
               {% else %}
               <div class='iconbox-state'>모집 완료 <i class="fas fa-users-slash"></i></i></div>
               {% endif %}
-
-              <div class='iconbox-headcount'>모집 인원 : {{board.headcount}} <i class="iconify" data-icon="cil:people"></i>
-              </div>
             </div>
           </div>
 
@@ -93,21 +94,21 @@
             <p style="border-style: groove;border-color: #1465AA;border-width: thin;"></p>
             </div>
             <div class='comment_wrapper'>
-              <div class='comment_head'>
+              <div>
                 댓글 <i class="iconify" data-icon="akar-icons:comment"></i>
               </div>
               {% for comment in comments %}
-              {% if comment.author == user %}
-              <div class='comment_box'>
-                {{comment.author}} : {{comment.text}}
-                <button class="btn btn-dark">
-                  <a href="{% url 'article:comment_edit' board.id comment.id %}">수정하기</a>
-                  </button>
-                <button class="btn btn-dark">
-                  <a href="{% url 'article:comment_delete' board.id comment.id %}">삭제하기</a>
-                  </button>  
-                <p style="border-style: groove;border-color: #1465AA;border-width: thin;"></p>
+              {% if comment.id == my_comment.id %}
+            <div class="card my-4">
+              <div class="comment_form_head">댓글 수정</div>
+              <div class="comment_form_body">
+                  <form method="POST">
+                      {% csrf_token %}
+                      <div class="form-group">{{ comment_form }}</div>
+                      <button type="submit" class="btn btn-dark">수정 완료</button>
+                  </form>
               </div>
+            </div>
               {% else %}
               <div class='comment_box'>
                 {{comment.author}} : {{comment.text}}
@@ -115,17 +116,8 @@
               </div>
               {% endif %}
               {% endfor %}
-              
-              <div class="card my-4">
-                  <div class="comment_form_head">댓글을 남겨보세요!</div>
-                  <div class="comment_form_body">
-                      <form method="POST">
-                          {% csrf_token %}
-                          <div class="form-group">{{ comment_form }}</div>
-                          <button type="submit" class="btn btn-dark">댓글 작성</button>
-                      </form>
-                  </div>
-              </div>
+              <!-- Comments Form -->
+
               <div class>
 
               </div>

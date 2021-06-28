@@ -72,6 +72,18 @@
 
 }
 
+.iconbox-headcount{
+    font-size: 0.5em;
+    float: left;
+    height: 3%;
+    width: 12%;
+    margin-right: 2%;
+    background-color: #d6b6d8b1;
+    padding: 1%;
+    border-radius: 50px;
+}
+
+
 .article_kakao{
     background-color: #AA9B67; 
     /* padding: 0.5%; */
@@ -96,6 +108,43 @@
 .comment_wrapper{
     padding: 2%;
 
+}
+
+.comment_head{
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    height: 3%;
+    width: 10%;
+    margin-right: 2%;
+    background-color: #6f77d0;
+    padding: 1%;
+    border-radius: 50px;
+}
+
+.comment_box{
+    font-size: 0.7em;
+}
+
+.comment_text{
+    float: left;
+    width: 50%;
+}
+
+.comment_button_box{
+    width: 30%;
+    float: left;
+}
+
+.comment_form_head{
+    background-color:rgb(172, 158, 144);
+    font-size: 0.7em;
+}
+
+.comment_form_body{
+    background-color:rgb(120, 109, 98);
+    font-size: 0.7em;
+    padding: 2%;
 }
 
 #cate_text{
