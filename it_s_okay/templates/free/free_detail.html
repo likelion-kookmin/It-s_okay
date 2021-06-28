@@ -1,0 +1,83 @@
+
+{% extends "main/base.html" %}
+
+{% block content %}
+
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/board_detail.css" %}" type="text/css" />
+{% endblock %}
+
+{% load bootstrap4 %}
+
+
+  <!--제목,분류,작성일-->
+  
+    <!--작성자, 조회수-->
+    <div class="ArticleContentBox">
+
+          <div class="article_header">
+            <div class='ariticle_title'>
+            {{ free_board.title }}
+            </div>
+            
+          </div>
+
+          <div class='article_container'>
+            
+        
+            <p style="border-style: groove;border-color: #1465AA;border-width: thin;"></p>
+            <div>
+              <div>
+                <!-- <pre class='fontfont'>{{ board.body }}</pre> -->
+                {{free_board.content | linebreaksbr}}
+              </div>
+            <p style="border-style: groove;border-color: #1465AA;border-width: thin;"></p>
+            </div>
+            <div class='comment_wrapper'>
+              <div>
+                <!-- 댓글 <i class="iconify" data-icon="akar-icons:comment"></i> -->
+              </div>
+              <div class='fontfont'>
+                <div id="disqus_thread"></div>
+<script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://cool-18.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript"></a></noscript>
+              </div>
+              <div>
+              </div>
+              
+              </div>
+            </div>
+            
+          
+          <div>
+            {% if user == free_board.writer %}
+            <button class="btn btn-dark" onclick="location.href='/free/{{ free_board.id }}/edit'">수정하기</button>
+            <button class="btn btn-dark" onclick="location.href='/free/{{ free_board.id }}/delete/'">삭제하기</button>
+            {% endif %}
+            <button class="btn btn-dark">
+              <a href="{% url 'free:free_list' %}">돌아가기</a>
+              </button>
+          </div>
+        </div>
+
+
+
+
+  {% endblock %}

@@ -37,9 +37,6 @@ def board_write(request):
     form = ArticleForm()
     return render(request, 'index/board_write.html', {'form' : form})
 
-
-
-
 # 보드 디테일
 
 def board_detail(request, id):
