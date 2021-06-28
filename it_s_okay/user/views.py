@@ -124,3 +124,12 @@ def change_pw(request):
     return render(request, 'user/change_pw.html', {
         'form': form
     })
+
+# 회원 탈퇴를 위한 코드
+def userDelete(request):
+    user = request.user
+    user.delete()
+    logout(request)
+    context = {}
+    return render(request, 'user/farewell.html', context)
+    # 탈퇴 후 로그아웃 / 함께 해주어서 고맙다는 farewell 화면으로 보내버림 
