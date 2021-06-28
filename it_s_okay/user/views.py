@@ -3,6 +3,11 @@ from django.contrib.auth.hashers import check_password
 from .models import Normaluser
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import auth
+from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
+#pw 변경을 위해 line 6~8까지 세줄 추가하였습니다.
+
 
 # 회원가입 대안버전
 
@@ -102,3 +107,20 @@ def logout(request):
 
 def mypage(request):
     return render(request, "user/mypage.html")
+
+# 비밀번호 변경 구현을 위한 코드
+def change_pw(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('change_pw')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'user/change_pw.html', {
+        'form': form
+    })
