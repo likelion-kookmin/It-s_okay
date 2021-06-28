@@ -1,0 +1,10 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+
+  {% csrf_token %}
+  {{ form }}
+  <button type="submit">변경 완료</button>
+</form>
+
+{% endblock %}
