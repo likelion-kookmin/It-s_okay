@@ -1,7 +1,7 @@
 from django.contrib.auth.hashers import check_password
 from django import forms 
 from django.forms.models import ModelForm
-from .models import Free
+from .models import Free, Comment
 
 
 
@@ -34,6 +34,32 @@ class FreeForm(forms.ModelForm):
     )
 
 
+class CommentForm(forms.ModelForm):
+    #text = forms.TextInput(label = '댓글')
+
+    class Meta:
+        model = Comment
+        fields = ['text']
+        # widgets = {
+        #     'text': forms.CharField
+        # }
+
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     self.fields['text'].label = "댓글"
+
+    # text = forms.CharField(
+    # error_messages={
+    #     'required': '댓글을 입력해주세요.'
+    # },
+    # max_length=50,
+    # label = "댓글"
+    # )
+
+
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     self.fields['text'].label = "댓글"
 # class CommentForm(forms.ModelForm):
 #     class Meta:
 #         model = Comment

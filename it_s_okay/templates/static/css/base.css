@@ -41,15 +41,6 @@ padding: 0;
 }
 
 .text-area{
-<<<<<<< HEAD
-  margin-top: 200px;
-  margin-left: 70px;
-}
-
-.volume {
-font-size: 30px;
-margin-bottom: 85px;
-=======
     margin-top: 10%;
     /* margin-left: 10%; */
     margin-bottom: 10%;
@@ -84,7 +75,6 @@ margin-bottom: 85px;
 
 .logo_gif{
   width: 40%;
->>>>>>> 16759cf2f05b2fd0359ec29a1bd05b983cc93faa
 }
 
 h1 {
@@ -145,20 +135,12 @@ opacity: 0.2;
 }
 
 .FL:first-letter {
-<<<<<<< HEAD
-font-size: 100px;
-}
-
-.hanbun {
-font-size: 15px;
-=======
   font-size: 2.5em;
 }
 
 .hanbun {
   font-size: 0.4em;
   margin-left: 13%;
->>>>>>> 16759cf2f05b2fd0359ec29a1bd05b983cc93faa
 }
 
 .footer{

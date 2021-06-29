@@ -18,3 +18,13 @@ class Free(models.Model):
 
         verbose_name = '자유게시판'
         verbose_name_plural = '자유게시판'
+
+class Comment(models.Model):
+    board = models.ForeignKey(Free, on_delete=models.CASCADE, null=True)
+    author = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, null=True, blank=True, related_name='free_comments')
+    text = models.CharField(max_length=100, null=True)
+    created = models.DateTimeField(auto_now_add=True, null=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return (self.author.username if self.author else "무명")+ "의 댓글"    

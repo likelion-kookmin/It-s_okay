@@ -38,10 +38,7 @@ def board_write(request):
     form = ArticleForm()
     return render(request, 'index/board_write.html', {'form' : form})
 
-<<<<<<< HEAD
-# 보드 디테일
-=======
-# 보드 디테일 / 댓글 생성
+
 
 def board_detail(request, board_id):
     board = get_object_or_404(Article, id=board_id)
@@ -63,7 +60,7 @@ def board_detail(request, board_id):
 
     else:
         comment_form = CommentForm()
->>>>>>> 16759cf2f05b2fd0359ec29a1bd05b983cc93faa
+
 
     context={
         'board':board,

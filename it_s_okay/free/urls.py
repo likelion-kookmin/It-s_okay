@@ -9,6 +9,7 @@ urlpatterns = [
      path('<int:free_id>', views.free_detail, name="free_detail"),
      path('<int:free_id>/edit/', views.free_edit,name='free_edit'),
      path('<int:free_id>/delete/', views.free_delete,name='free_delete'),
-     #path('create',views.create, name="create"),
+     path('<int:free_id>/commment_edit/<int:comment_id>', views.comment_edit,name='comment_edit'),
+     path('<int:free_id>/commment_delete/<int:comment_id>', views.comment_delete,name='comment_delete'),
 
 ]
