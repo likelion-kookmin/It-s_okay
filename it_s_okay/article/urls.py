@@ -13,7 +13,8 @@ urlpatterns = [
     path('<int:board_id>/edit/', views.board_edit,name='board_edit'),
     path('<int:board_id>/delete/',views.board_delete,name="board_delete"),
     path('<int:board_id>/comment_edit/<int:comment_id>',views.comment_edit,name='comment_edit'),
-    path('<int:board_id>/comment_delete/<int:comment_id>',views.comment_delete,name='comment_delete')
+    path('<int:board_id>/comment_delete/<int:comment_id>',views.comment_delete,name='comment_delete'),
+    path('list/<str:boardtype>', views.category_list, name='category_list'),
 
 
 

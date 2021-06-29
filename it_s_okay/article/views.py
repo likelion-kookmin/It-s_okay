@@ -111,8 +111,27 @@ def board_delete(request, board_id):
     
     return render(request, 'index/board_delete.html')
 
+# 보드 카테고리 뷰
+
+def category_list(request, boardtype):
+    if boardtype == '풋살' or '축구' or '농구' or '야구' or '배드민턴':
+        all_boards = Article.objects.filter(category__contains=boardtype)
+        page        = int(request.GET.get('p', 1))
+        pagenator   = Paginator(all_boards, 5)
+        boards      = pagenator.get_page(page)
+        cate = boardtype
+
+    
+    return render(request, 'index/board_category_list.html', {"boards" : boards, "cate" : cate})
 
 
+
+# def board_list(request):
+#     all_boards = Article.objects.all().order_by('-id')
+#     page        = int(request.GET.get('p', 1))
+#     pagenator   = Paginator(all_boards, 5)
+#     boards      = pagenator.get_page(page)
+#     return render(request, 'index/board_list.html', {"boards" : boards})
 # 댓글 수정
 
 def comment_edit(request, board_id, comment_id):
