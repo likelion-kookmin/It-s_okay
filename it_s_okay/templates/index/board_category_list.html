@@ -1,0 +1,149 @@
+{% extends "main/base.html" %}
+{% block content %}
+{% load static %}
+
+<div class = "listdiv_list">
+<div class = "list-inside">
+<section class="search-sec">
+  <div class="container">
+      <!-- <form action="." method="POST" novalidate="novalidate"> -->
+          <div class="row row-cols-4">
+              <div class="a">
+                  <select class="search-slt" name='category' id="category" placeholder='카테고리' onChange="window.location.href=this.value">
+                      <option>활동</option>
+                      <option disabled>--야외 스포츠--</option>
+                      <option value="futsal">풋살</option>
+                      <option value="축구">축구</option>
+                      <option value="농구">농구</option>
+                      <option value="야구">야구</option>
+                      <option value="배드민턴">배드민턴</option>
+                      <option disabled>--문화--</option>
+                      <option value="영화">영화</option>
+                      <option value="전시회">전시회</option>
+                      <option value="독서모임">독서모임</option>
+                      <option disabled>--엔터테이먼트--</option>
+                      <option value="방탈출">방탈출</option>
+                      <option value="보드게임">보드게임</option>
+                      <option disabled>--스터디--</option>
+                      <option value="스터디">스터디</option>
+                      <option disabled>--온라인 활동--</option>
+                      <option value="게임">게임</option>
+                      <option value="온라인 스터디">온라인 스터디</option>
+                  </select>
+              </div>
+              <div class="a">
+                <select class="form-control search-slt" id="age" placeholder='연령대'>
+                    <option>모집 희망 연령대</option>
+                    <option value="10대">10대</option>
+                    <option value="20대">20대</option>
+                    <option value="30대">30대</option>
+                    <option value="40대">40대</option>
+                    <option value="50대 이상">50대 이상</option>
+                </select>
+            </div>
+            <div class="a">
+              <select class="form-control search-slt" id="state" placeholder='모집 상태'>
+                  <option>모집 상태</option>
+                  <option value="모집중">모집중</option>
+                  <option value="모집 완료">모집 완료</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      <!-- </form> -->
+  </div>
+</section>
+
+
+  <div class='search-sec-list'>
+  <div class='center'>
+    {{cate}}
+  <div class="row mt-5">
+    <div class="col-12">
+      <table class="table">
+        <thead class="table-active">
+          <tr style="background-color:#064989;">
+            <th scope="col">제목 <i class="iconify" data-icon="noto:cat-with-wry-smile""></i></th>
+            <th scope="col">활동 <i class="iconify" data-icon="noto:lollipop"></i></th>
+            <th scope="col">위치 <i class="iconify" data-icon="openmoji:location-indicator-red"></i></th>
+            <th scope="col">연령대 <i class="iconify" data-icon="emojione:face-blowing-a-kiss"></i></th>
+            <th scope="col">모집인원 <i class="iconify" data-icon="openmoji:love-you-gesture"></i></th>
+            <th scope="col">모집상태 <i class="iconify" data-icon="emojione:four-leaf-clover"></i></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for board in boards %}
+          <tr onclick="location.href='/board/{{ board.id }}/'">
+            <td>{{ board.title }}</td>
+            <td>{{ board.category }}</td>
+            <td>{{ board.area }}</td>
+            <td>{{ board.age }}</td>
+            <td>{{ board.headcount }}</td>
+            <td>{{ board.state }}</td>
+          </tr>
+          {% endfor %}
+          </tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+
+
+    <div class="row mt-2">
+    <div class="col-12">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          {% if boards.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?p={{ boards.previous_page_number }}"
+              >Previous</a
+            >
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <a class="page-link" href="#">Previous</a>
+          </li>
+          {% endif %}
+          <li class="page-item">
+            <a class="page-link" href="#"
+              >{{ boards.number }} / {{ boards.paginator.num_pages }}</a
+            >
+          </li>
+          {% if boards.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?p={{ boards.next_page_number }}">Next</a>
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <a class="page-link" href="#">Next</a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+
+
+  
+  <div style="margin-left : 5%;">
+  <div class="row">
+    <div class="col-12">
+      {% if user.is_authenticated %}
+      <button  class="btn btn-dark ">
+        <a href="{% url 'article:board_write' %}">글쓰기</a>
+      </button>
+      {% endif %}
+      <!-- <button class="btn btn-primary", action="{% url 'article:board_write' %}">글쓰기</button> -->
+
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+{% endblock %}

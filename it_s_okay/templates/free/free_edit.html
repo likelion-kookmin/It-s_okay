@@ -1,0 +1,23 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+{% load bootstrap4 %}
+<br>
+<div class="listdiv">
+	<div class="list-inside">
+		<div class="form-group">
+		<form method="POST", aria-readonly="true">
+		{% csrf_token %}
+		
+		{% bootstrap_form form %}
+		<input class="btn btn-dark" type="submit" value="수정완료">
+		<button class="btn btn-dark">
+			<a href="{% url 'free:free_list' %}">돌아가기</a>
+			</button>	
+		</form>
+		</div>
+
+</div>
+</div>
+
+{% endblock %}

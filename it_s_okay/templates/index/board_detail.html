@@ -1,0 +1,155 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/board_detail.css" %}" type="text/css" />
+{% endblock %}
+
+{% load bootstrap4 %}
+  
+    <div class="ArticleContentBox">
+
+          <div class="article_header">
+            <div class='ariticle_title'>
+            {{ board.title }}
+            </div>
+            <div class = 'iconsection'>
+              {% if board.category == '온라인 스터디' %}
+              <div id='icon-onlinestudy'>온라인 스터디 <i class="fas fa-graduation-cap"></i></div>
+              {% elif board.category == '풋살' %}
+              <div class='iconbox-category'>풋살 <i class="fas fa-futbol"></i></div>
+              {% elif board.category == '축구' %}
+              <div class='iconbox-category'>축구 <i class="fas fa-futbol"></i></div>
+              {% elif board.category == '농구' %}
+              <div class='iconbox-category'>농구 <i class="fas fa-basketball-ball"></i></div>
+              {% elif board.category == '야구' %}
+              <div class='iconbox-category'>야구 <i class="fas fa-baseball-ball"></i></div>
+              {% elif board.category == '배드민턴' %}
+              <div class='iconbox-category'>배드민턴</div>
+              {% elif board.category == '영화' %}
+              <div class='iconbox-category'>영화 <i class="fas fa-video"></i></div>
+              {% elif board.category == '전시회' %}
+              <div class='iconbox-category'>전시회 <i class="fas fa-archway"></></i></div>
+              {% elif board.category == '독서모임' %}
+              <div class='iconbox-category'>독서모임 <i class="fas fa-book"></i></i></div>
+              {% elif board.category == '방탈출' %}
+              <div class='iconbox-category'>방탈출 <i class="fas fa-running"></i></div>
+              {% elif board.category == '보드게임' %}
+              <div class='iconbox-category'>보드게임 <i class="fas fa-inbox"></i></i></div>
+              {% elif board.category == '스터디' %}
+              <div class='iconbox-category'>스터디 <i class="fas fa-graduation-cap"></i></div>
+              {% else %}
+              <div class='iconbox-category'>게임 <i class="fas fa-gamepad"></i></div>
+              {% endif %}
+
+              {% if board.age == '10대' %}
+              <div class='iconbox-age'>10대 <i class="fas fa-user-friends"></i></div>
+              {% elif board.age == '20대' %}
+              <div class='iconbox-age'>20대 <i class="fas fa-user-friends"></i></div>
+              {% elif board.age == '30대' %}
+              <div class='iconbox-age'>30대 <i class="fas fa-user-friends"></i></div>
+              {% elif board.age == '40대' %}
+              <div class='iconbox-age'>40대 <i class="fas fa-user-friends"></i></div>
+              {% else %}
+              <div id='icon-50'>50대 이상 <i class="fas fa-user-friends"></i></div>
+              {% endif %}
+
+              {% if board.state == '모집중' %}
+              <div class='iconbox-state'>모집중 <i class="fas fa-user-check"></i></div>
+              {% else %}
+              <div class='iconbox-state'>모집 완료 <i class="fas fa-users-slash"></i></i></div>
+              {% endif %}
+
+              <div class='iconbox-headcount'>모집 인원 : {{board.headcount}} <i class="iconify" data-icon="cil:people"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class='article_container'>
+            <div class='article_area'>
+              <div id='area_main'>
+                장소 <i class="iconify" data-icon="ic:round-place"></i>
+              </div>
+              <div id='cate_text'>
+              {{board.area}}
+              </div>
+            </div>
+            <div class='article_kakao'>
+              <div id='url_main'>
+            카톡 ID or 오픈카톡 URL <i class="iconify" data-icon="vs-kakaotalk"></i>
+              </div>
+              <div id='cate_text'>
+              {{board.kakao_url}}
+              </div>
+            </div>
+            <p style="border-style: groove;border-color: #1465AA;border-width: thin;"></p>
+            <div>
+              <div>
+                <!-- <pre class='fontfont'>{{ board.body }}</pre> -->
+                {{board.body | linebreaksbr}}
+              </div>
+            <p style="border-style: groove;border-color: #1465AA;border-width: thin;"></p>
+            </div>
+            <div class='comment_wrapper'>
+              <div class='comment_head'>
+                댓글 <i class="iconify" data-icon="akar-icons:comment"></i>
+              </div>
+              {% for comment in comments %}
+              {% if comment.author == user %}
+              <div class='comment_box'>
+                {{comment.author}} : {{comment.text}}
+                <button class="btn btn-dark">
+                  <a href="{% url 'article:comment_edit' board.id comment.id %}">수정하기</a>
+                  </button>
+                <button class="btn btn-dark">
+                  <a href="{% url 'article:comment_delete' board.id comment.id %}">삭제하기</a>
+                  </button>  
+                <p style="border-style: groove;border-color: #1465AA;border-width: thin;"></p>
+              </div>
+              {% else %}
+              <div class='comment_box'>
+                {{comment.author}} : {{comment.text}}
+                <p style="border-style: groove;border-color: #1465AA;border-width: thin;"></p>
+              </div>
+              {% endif %}
+              {% endfor %}
+              
+              <div class="card my-4">
+                  <div class="comment_form_head">댓글을 남겨보세요!</div>
+                  <div class="comment_form_body">
+                      <form method="POST">
+                          {% csrf_token %}
+                          <div class="form-group">{{ comment_form }}</div>
+                          <button type="submit" class="btn btn-dark">댓글 작성</button>
+                      </form>
+                  </div>
+              </div>
+              <div class>
+
+              </div>
+
+              </div>
+
+              
+              </div>
+            
+            
+          
+          <div>
+            {% if user == board.writer %}
+            <button class="btn btn-dark" onclick="location.href='/board/{{ board.id }}/edit'">수정하기</button>
+            <button class="btn btn-dark" onclick="location.href='/board/{{ board.id }}/delete/'">삭제하기</button>
+            {% endif %}
+            <button class="btn btn-dark">
+              <a href="{% url 'article:board_list' %}">돌아가기</a>
+              </button>
+          </div>
+        </div>
+      </div>
+
+
+
+
+  {% endblock %}

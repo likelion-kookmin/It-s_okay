@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        {% load static %}
+        
+
+        <!-- BOOTSTRAP LINK -->
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+        <!-- DEFUALT CSS LINK -->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+        <!-- Footer Link -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <!-- icon -->
+        <script src="https://kit.fontawesome.com/4903e3c247.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/4764f4dcde.js" crossorigin="anonymous"></script>
+        <link
+          rel="stylesheet"
+          href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+        
+        />
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+
+
+    </head>
+<body>
+  <div class="wrap_content">
+    <!-- 모든 페이지에 공통으로 들어갈 요소 -->
+    <nav class="navbar navbar-expand-lg navbar-light style="background-color: #A9C1ED;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'main:index' %}">쿨괜</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active " aria-current="page" href="{% url 'article:board_list' %}">글 목록</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">자유 게시판</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">비밀 게시판</a>
+              </li>
+
+
+                {% if user.is_authenticated %}
+                {{user.username}} 님 환영합니다!
+                <button class="btn btn-dark">
+                  <a href="{% url 'user:logout' %}">로그아웃</a>
+                </button>
+
+                <div class = "margin-right">                
+                <button class="btn btn-dark">                  
+                  <a href="{% url 'user:mypage' %}">마이페이지</a>
+                </button></div>
+
+                {% else %}
+                <li>
+                  <button class="btn btn-dark">
+                    <a href="{% url 'user:register' %}">회원가입</a>
+                  </button>
+                </li>
+                <button class="btn btn-dark">
+                  <a href="{% url 'user:login' %}">로그인</a>
+                </button>
+                {% endif %}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    
+    {% block content %} 
+    {% endblock %}  
+
+
+    <div class="footer-basic">
+          <div class="social">LikeLion-Kookmin/it-s_okay<a href="https://github.com/likelion-kookmin/It-s_okay"><i class="icon ion-social-github"></i></a></div>
+          <div class="social"><b>Contributors : </b><br>
+            Kijung Lee<a href="https://github.com/kkIIun"><i class="icon ion-social-github"></i></a>
+            Seyeon Jang<a href="https://github.com/Seyom"><i class="icon ion-social-github"></i></a>
+            Soye Kwon <a href="https://github.com/soyekwon"><i class="icon ion-social-github"></i></a>
+            Junyub Kim <a href="https://github.com/jun-yub-kim"><i class="icon ion-social-github"></i></a>
+            SeungHwan Lee<a href="https://github.com/sh981013s"><i class="icon ion-social-github"></i></a>
+          </div>
+  </div>
+
+</body>
+</html>
