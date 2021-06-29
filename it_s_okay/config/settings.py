@@ -46,7 +46,7 @@ SECRET_KEY = get_secret("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(get_secret("DEBUG"))
 
-ALLOWED_HOSTS = ["django-env.eba-mjmprgwq.us-west-2.elasticbeanstalk.com"]
+ALLOWED_HOSTS = ["django-env.eba-yjhfssmp.us-west-2.elasticbeanstalk.com"]
 
 
 # Application definition
