@@ -1,1 +1,21 @@
-굿바이
+{% extends 'main/base.html' %}
+{% block content %}
+<center>
+  <font-size: "50">
+  <br>그동안 쿨해도 괜찮아를 이용해 주셔서 감사합니다.
+  
+  <br><br>보다 나은 서비스로 다시 찾아 뵙겠습니다.
+  
+  <br><br>쿨하게 다시 만나요!
+  
+  <br><br><button class="btn btn-dark">
+    <a href="{% url 'main:index' %}">홈으로</a>
+  </button>
+  </font-size: "50">
+  
+  </center>
+
+  
+  
+  {% endblock %}
+  
