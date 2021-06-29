@@ -40,6 +40,14 @@ margin: 0;
 padding: 0;
 }
 
+
+/* 마이페이지 우측 상단 고정을 위한 코드 */
+.margin-right{
+  position : relative;
+  left : 970px;
+}
+
+
 .text-area{
     margin-top: 10%;
     /* margin-left: 10%; */
