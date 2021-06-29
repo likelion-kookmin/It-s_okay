@@ -1,0 +1,26 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+<center>
+    <font-size: "50">
+    <br>정말로 탈퇴하시겠습니까?
+    
+    <br><br>더이상 해당 계정으로 작성하신 글과 댓글을 수정 및 삭제하실 수 없습니다.
+    
+    <br><br>
+    <button class="btn btn-dark">
+        <a href="{% url 'user:delete_success' %}">예</a>
+      </button>
+
+    <button class="btn btn-dark">
+        <a href="{% url 'user:login' %}">아니오</a>
+    </button>
+    
+    <br><br>
+    </font-size: "50">
+    
+    </center>
+
+    
+{% endblock %}
+    
