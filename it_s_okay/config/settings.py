@@ -41,12 +41,12 @@ def get_secret(setting, secrets=secret_text):
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_secret("SECRET_KEY")
+SECRET_KEY = "Aasdfasdfasdf$!$dsaf"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(get_secret("DEBUG"))
+DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["django-env.eba-mjmprgwq.us-west-2.elasticbeanstalk.com"]
 
 
 # Application definition
