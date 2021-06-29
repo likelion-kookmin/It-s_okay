@@ -61,7 +61,7 @@ def free_write(request):
             article_free = form.save(commit=False)
             article_free.writer = request.user
             article_free.save()
-        return redirect('/free/'+ str(article_free.id))
+            return redirect('/free/'+ str(article_free.id))
         
     form = FreeForm()
     return render(request, 'free/free_write.html', {'form' : form})
