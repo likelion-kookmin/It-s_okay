@@ -6,13 +6,14 @@
 <div class = "list-inside">
 <section class="search-sec">
   <div class="container">
-      <!-- <form action="." method="POST" novalidate="novalidate"> -->
+      <form action="{% url 'article:category_list' %}" method="POST" novalidate="novalidate" id="category_list1">
+        {% csrf_token %}
           <div class="row row-cols-4">
               <div class="a">
-                  <select class="search-slt" name='category' id="category" placeholder='카테고리' onChange="window.location.href=this.value">
-                      <option>활동</option>
+                  <select class="search-slt" id='category' name='category'>
+                      <option value="활동" id='활동'>활동</option>
                       <option disabled>--야외 스포츠--</option>
-                      <option value="futsal">풋살</option>
+                      <option value="풋살">풋살</option>
                       <option value="축구">축구</option>
                       <option value="농구">농구</option>
                       <option value="야구">야구</option>
@@ -32,8 +33,8 @@
                   </select>
               </div>
               <div class="a">
-                <select class="form-control search-slt" id="age" placeholder='연령대'>
-                    <option>모집 희망 연령대</option>
+                <select class="form-control search-slt" name="age">
+                    <option vlaue="모집 희망 연령대">모집 희망 연령대</option>
                     <option value="10대">10대</option>
                     <option value="20대">20대</option>
                     <option value="30대">30대</option>
@@ -42,27 +43,35 @@
                 </select>
             </div>
             <div class="a">
-              <select class="form-control search-slt" id="state" placeholder='모집 상태'>
-                  <option>모집 상태</option>
-                  <option value="모집중">모집중</option>
-                  <option value="모집 완료">모집 완료</option>
+              <select class="form-control search-slt" name="state">
+                  <option value="모집 상태">모집 상태</option>
+                  <option value="모집중">모집 중</option>
+                  <option value="모집완료">모집 완료</option>
               </select>
+            </div>
+            <div class="a">
+              <input type="submit" value="찾기" class="btn btn-danger wrn-btn"></input>
             </div>
           </div>
         </div>
-      <!-- </form> -->
+      </form>
   </div>
 </section>
 
 
+
+
+
   <div class='search-sec-list'>
+    {% if warning == 'error' %}
+    <p style='font-size:2em;text-align:center;'>죄송해요, 조건에 부합하는 모집 글이 없네요 <i class="iconify" data-icon="emojione:loudly-crying-face""></i> </p>
+    {% endif %}
   <div class='center'>
-    {{cate}}
   <div class="row mt-5">
     <div class="col-12">
       <table class="table">
         <thead class="table-active">
-          <tr style="background-color:#064989;">
+          <tr style="background-color:#6185a7;">
             <th scope="col">제목 <i class="iconify" data-icon="noto:cat-with-wry-smile""></i></th>
             <th scope="col">활동 <i class="iconify" data-icon="noto:lollipop"></i></th>
             <th scope="col">위치 <i class="iconify" data-icon="openmoji:location-indicator-red"></i></th>
@@ -73,7 +82,7 @@
         </thead>
         <tbody>
           {% for board in boards %}
-          <tr onclick="location.href='/board/{{ board.id }}/'">
+          <tr style="background-color:#a9bac9;" onclick="location.href='/board/{{ board.id }}/'">
             <td>{{ board.title }}</td>
             <td>{{ board.category }}</td>
             <td>{{ board.area }}</td>
@@ -132,6 +141,9 @@
       {% if user.is_authenticated %}
       <button  class="btn btn-dark ">
         <a href="{% url 'article:board_write' %}">글쓰기</a>
+      </button>
+      <button  class="btn btn-dark ">
+        <a href="{% url 'article:board_list' %}">전체목록</a>
       </button>
       {% endif %}
       <!-- <button class="btn btn-primary", action="{% url 'article:board_write' %}">글쓰기</button> -->
