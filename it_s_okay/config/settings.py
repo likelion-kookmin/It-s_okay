@@ -44,7 +44,7 @@ def get_secret(setting, secrets=secret_text):
 SECRET_KEY = get_secret("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(get_secret("DEBUG"))
 
 ALLOWED_HOSTS = ["django-env.eba-p7dhexrp.us-west-2.elasticbeanstalk.com"]
 
@@ -152,3 +152,5 @@ STATIC_URL = "/static/"
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "templates/static"),
 ]
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
