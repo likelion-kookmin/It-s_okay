@@ -17,7 +17,7 @@ from django.core.exceptions import ImproperlyConfigured
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField' 
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 secret_file = os.path.join(BASE_DIR, "secrets.json")  # secrets.json 파일 위치를 명시
@@ -44,9 +44,9 @@ def get_secret(setting, secrets=secret_text):
 SECRET_KEY = get_secret("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(get_secret("DEBUG"))
 
-ALLOWED_HOSTS = ["django-env.eba-6pbiseh4.us-west-2.elasticbeanstalk.com"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -63,8 +63,7 @@ INSTALLED_APPS = [
     "category",
     "user",
     "free.apps.FreeConfig",
-    'bootstrap4',
-    
+    "bootstrap4",
 ]
 
 MIDDLEWARE = [
@@ -153,6 +152,3 @@ STATIC_URL = "/static/"
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "templates/static"),
 ]
-
-
-
