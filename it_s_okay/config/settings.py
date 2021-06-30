@@ -44,7 +44,7 @@ def get_secret(setting, secrets=secret_text):
 SECRET_KEY = get_secret("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(get_secret("DEBUG"))
 
 ALLOWED_HOSTS = ["*"]
 
