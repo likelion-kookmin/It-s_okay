@@ -61,8 +61,7 @@ INSTALLED_APPS = [
     "category",
     "user",
     "free.apps.FreeConfig",
-    'bootstrap4',
-    
+    "bootstrap4",
 ]
 
 MIDDLEWARE = [
@@ -152,9 +151,4 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "templates/static"),
 ]
 
-<<<<<<< HEAD
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
-=======
-
-
->>>>>>> develop
