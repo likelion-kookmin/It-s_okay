@@ -10,7 +10,7 @@
 <div class="listdiv">
 	<div class="list-inside">
 		<div class="form-group">
-		<form method="POST", aria-readonly="true">
+		<form method="POST", aria-readonly="true" enctype="multipart/form-data">
 		{% csrf_token %}
 		
 		{% bootstrap_form form %}
