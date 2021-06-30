@@ -24,6 +24,17 @@ def board_list(request):
     return render(request, 'index/board_list.html', {"boards" : boards})
 
 
+# 내가쓴글
+
+def mypost(request):
+    all_board = Article.objects.all().order_by('-id')
+    all_boards = all_board.filter(writer=request.user.id)
+    page        = int(request.GET.get('p', 1))
+    pagenator   = Paginator(all_boards, 5)
+    boards      = pagenator.get_page(page)
+    return render(request, 'index/board_list.html', {"boards" : boards})
+
+
 
 # 보드 작성
 
