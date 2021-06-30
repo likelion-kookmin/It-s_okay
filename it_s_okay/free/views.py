@@ -19,6 +19,17 @@ def free_list(request):
     # #return render(request, 'free/free_list.html')
     # return render(request, 'free/free_list.html', {"free_board" : free_board})
 
+# 내가쓴글
+
+def mypost(request):
+    all_board = Free.objects.all().order_by('-id')
+    all_boards = all_board.filter(writer=request.user.id)
+    page        = int(request.GET.get('p', 1))
+    pagenator   = Paginator(all_boards, 5)
+    boards      = pagenator.get_page(page)
+    return render(request, 'free/free_list.html', {"boards" : boards})
+ 
+
 def free_detail(request, free_id):
     board = get_object_or_404(Free, id=free_id)
     comments = Comment.objects.filter(board=free_id)

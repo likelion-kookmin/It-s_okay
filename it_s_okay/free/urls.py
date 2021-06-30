@@ -11,5 +11,7 @@ urlpatterns = [
      path('<int:free_id>/delete/', views.free_delete,name='free_delete'),
      path('<int:free_id>/commment_edit/<int:comment_id>', views.comment_edit,name='comment_edit'),
      path('<int:free_id>/commment_delete/<int:comment_id>', views.comment_delete,name='comment_delete'),
+     path('mypost/', views.mypost, name='mypost'),
+
 
 ]
