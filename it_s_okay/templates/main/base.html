@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>{% block title%}Default title{% endblock %}</title>
         {% load static %}
         
 
@@ -29,9 +29,26 @@
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 
+        <style>
+            body {
+      cursor: none;
+        }
+        </style>
 
     </head>
 <body>
+
+  <div class="cursor"></div>
+  <div class="cursor2"></div>
+
+  <script>
+    var cursor = document.querySelector(".cursor");
+    var cursor2 = document.querySelector(".cursor2");
+    document.addEventListener("mousemove",function(e){
+      cursor.style.cssText = cursor2.style.cssText = "left: " + e.clientX + "px; top: " + e.clientY + "px;";
+    });
+  </script>
+
   <div class="wrap_content">
     <!-- 모든 페이지에 공통으로 들어갈 요소 -->
     <nav class="navbar navbar-expand-lg navbar-light style="background-color: #A9C1ED;">
@@ -78,7 +95,9 @@
             </ul>
           </div>
         </div>
-      </nav>
+      </nav> 
+
+      
     
     {% block content %} 
     {% endblock %}  

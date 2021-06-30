@@ -1,7 +1,10 @@
 {% extends "main/base.html" %}
 
-{% block content %}
+{% block title %}
+{{board.title}}
+{% endblock %}
 
+{% block content %}
 {% load static %}
 {% block css %}
     <link rel="stylesheet" href="{% static "css/board_detail.css" %}" type="text/css" />
