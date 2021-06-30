@@ -17,8 +17,6 @@ from django.core.exceptions import ImproperlyConfigured
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
 
 secret_file = os.path.join(BASE_DIR, "secrets.json")  # secrets.json 파일 위치를 명시
 
@@ -44,9 +42,9 @@ def get_secret(setting, secrets=secret_text):
 SECRET_KEY = get_secret("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(get_secret("DEBUG"))
+DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -63,14 +61,15 @@ INSTALLED_APPS = [
     "category",
     "user",
     "free.apps.FreeConfig",
-    "bootstrap4",
+    'bootstrap4',
+    
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
-    # "django.middleware.csrf.CsrfViewMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -152,3 +151,6 @@ STATIC_URL = "/static/"
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "templates/static"),
 ]
+
+
+
