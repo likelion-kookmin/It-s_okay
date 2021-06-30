@@ -23,6 +23,8 @@ def board_list(request):
     boards      = pagenator.get_page(page)
     return render(request, 'index/board_list.html', {"boards" : boards})
 
+
+
 # 보드 작성
 
 def board_write(request):
@@ -67,6 +69,8 @@ def board_detail(request, board_id):
         'comments':comments,
         'comment_form':comment_form
     }
+    print('asda')
+    print(board.writer_id)
 
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
