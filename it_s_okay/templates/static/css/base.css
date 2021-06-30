@@ -383,12 +383,13 @@ margin-bottom:0;
   top: 0;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  transition: .1s;
+  /* transition: .1s; */ 
+  transition: width 0.15s ease-in 0.1s;  
+
   gradient :(rgba(82,82,255,0.7), rgba(200,200,200,0), rgba(150,150,150,0)); 
   background: -o-radial-gradient(rgba(82,82,255,0.6), rgba(200,200,200,0), rgba(150,150,150,0)); 
   background: -moz-radial-gradient(rgba(82,82,255,0.2), rgba(200,200,200,0), rgba(150,150,150,0)); 
   background: radial-gradient(rgba(211,197,255,0.4), rgba(200,200,200,0), rgba(150,150,150,0)); 
-  transition: .1s;
   
 }
 
@@ -403,7 +404,7 @@ margin-bottom:0;
   top: 0;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  transition: .15s;
+  transition: .11s;
   
   
 }
