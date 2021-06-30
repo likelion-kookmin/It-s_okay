@@ -23,6 +23,19 @@ def board_list(request):
     boards      = pagenator.get_page(page)
     return render(request, 'index/board_list.html', {"boards" : boards})
 
+
+# 내가쓴글
+
+def mypost(request):
+    all_board = Article.objects.all().order_by('-id')
+    all_boards = all_board.filter(writer=request.user.id)
+    page        = int(request.GET.get('p', 1))
+    pagenator   = Paginator(all_boards, 5)
+    boards      = pagenator.get_page(page)
+    return render(request, 'index/board_list.html', {"boards" : boards})
+
+
+
 # 보드 작성
 
 def board_write(request):
@@ -67,6 +80,8 @@ def board_detail(request, board_id):
         'comments':comments,
         'comment_form':comment_form
     }
+    print('asda')
+    print(board.writer_id)
 
     if request.method == 'POST':
         comment_form = CommentForm(request.POST)
@@ -113,18 +128,41 @@ def board_delete(request, board_id):
 
 # 보드 카테고리 뷰
 
-def category_list(request, boardtype):
-    if boardtype == '풋살' or '축구' or '농구' or '야구' or '배드민턴':
-        all_boards = Article.objects.filter(category__contains=boardtype)
+def category_list(request):
+    if request.method == 'POST':
+        category = request.POST.get('category')
+        age = request.POST.get('age')
+        state = request.POST.get('state')
+        all_boards = Article.objects.all()
+        
+        if category != '활동' and age != '모집 희망 연령대' and state != '모집 상태':
+            all_boards = Article.objects.filter(Q(category=category) & Q(age=age) & Q(state=state)).order_by('-id')
+        elif age == '모집 희망 연령대' and state == '모집 상태':
+            all_boards = Article.objects.filter(Q(category=category)).order_by('-id')
+        elif category == '활동' and state == '모집 상태':
+            all_boards = Article.objects.filter(Q(age=age)).order_by('-id')
+        elif category == '활동' and age == '모집 희망 연령대':
+            all_boards = Article.objects.filter(Q(state=state)).order_by('-id')
+        else:
+            pass
+        
         page        = int(request.GET.get('p', 1))
         pagenator   = Paginator(all_boards, 5)
         boards      = pagenator.get_page(page)
-        cate = boardtype
+        warning = {}
 
-    
-    return render(request, 'index/board_category_list.html', {"boards" : boards, "cate" : cate})
+        if not boards:
+            warning = 'error'
 
+    context={
+        'boards' : boards,
+        'age' : age,
+        'category' : category,
+        'state' : state,
+        'warning' : warning
+    }
 
+    return render(request, 'index/board_category_list.html', context)
 
 # def board_list(request):
 #     all_boards = Article.objects.all().order_by('-id')

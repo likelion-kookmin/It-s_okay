@@ -17,6 +17,9 @@ body{
   overflow-y: hidden; */
 }
 
+
+
+
 @font-face {
 font-family: 'BinggraeSamanco';
 src: local('BinggraeSamanco'),
@@ -51,7 +54,9 @@ padding: 0;
 .text-area{
     margin-top: 10%;
     /* margin-left: 10%; */
-    margin-bottom: 10%;
+    /* margin-bottom: 10%; */
+    background: #a6c1ee;
+
 }
 
 .volume {
@@ -64,7 +69,25 @@ padding: 0;
 }
 
 .info_1{
-  background-color:#afcaf7;
+  /* background: linear-gradient(to bottom, transparent, #EEC2F0); */
+  background: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+  /* background-color:#afcaf7; */
+  text-align: center;
+  font-size: 2em;
+  padding: 3%;
+}
+
+.info_2{
+  background: linear-gradient(to top, #a6c1ee 0%, #fbc2eb 100%);
+  /* background-color:#afcaf7; */
+  text-align: center;
+  font-size: 2em;
+  padding: 3% 3% 3% 3%;
+}
+
+.info_3{
+  background: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+  /* background-color:#afcaf7; */
   text-align: center;
   font-size: 2em;
   padding: 3%;
@@ -349,6 +372,48 @@ color:#aaa;
 margin-bottom:0;
 }
 
+.cursor{
+  z-index:3;
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #b283ff;
+  border-radius: 100%;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  /* transition: .1s; */ 
+  transition: width 0.15s ease-in 0.1s;  
+
+  gradient :(rgba(82,82,255,0.7), rgba(200,200,200,0), rgba(150,150,150,0)); 
+  background: -o-radial-gradient(rgba(82,82,255,0.6), rgba(200,200,200,0), rgba(150,150,150,0)); 
+  background: -moz-radial-gradient(rgba(82,82,255,0.2), rgba(200,200,200,0), rgba(150,150,150,0)); 
+  background: radial-gradient(rgba(211,197,255,0.4), rgba(200,200,200,0), rgba(150,150,150,0)); 
+  
+}
+
+.cursor2{
+  z-index:3;
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background-color: #9f51f0;
+  border-radius: 50%;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: .11s;
+  
+  
+}
+
+.right{
+  display: inline-block;
+  width: 45%;
+  vertical-align: top;
+}
 
 /* Media */
 @media (min-width: 992px){

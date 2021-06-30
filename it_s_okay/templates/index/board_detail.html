@@ -1,7 +1,10 @@
 {% extends "main/base.html" %}
 
-{% block content %}
+{% block title %}
+{{board.title}}
+{% endblock %}
 
+{% block content %}
 {% load static %}
 {% block css %}
     <link rel="stylesheet" href="{% static "css/board_detail.css" %}" type="text/css" />
@@ -76,14 +79,23 @@
               {{board.area}}
               </div>
             </div>
+            <div class='article_date'>
+              <div id='url_main' style='background-color:rgb(116, 169, 191);'>
+            만남 날짜 <i class="iconify" data-icon="bi:calendar-date-fill"></i>
+              </div>
+              <div id='cate_text'>
+              {{board.meeting_date}}
+              </div>
+            </div>
             <div class='article_kakao'>
               <div id='url_main'>
             카톡 ID or 오픈카톡 URL <i class="iconify" data-icon="vs-kakaotalk"></i>
               </div>
               <div id='cate_text'>
-              {{board.kakao_url}}
+                <a href="{{board.kakao_url}}">{{board.kakao_url}}</a>
               </div>
             </div>
+
             <p style="border-style: groove;border-color: #1465AA;border-width: thin;"></p>
             <div>
               <div>
@@ -93,12 +105,12 @@
             <p style="border-style: groove;border-color: #1465AA;border-width: thin;"></p>
             </div>
             <div class='comment_wrapper'>
-              <div class='comment_head'>
+              <div style="margin-top:10%;"class='comment_head'>
                 댓글 <i class="iconify" data-icon="akar-icons:comment"></i>
               </div>
               {% for comment in comments %}
               {% if comment.author == user %}
-              <div class='comment_box'>
+              <div style="line-height:2em;margin-top:2%;"class='comment_box'>
                 {{comment.author}} : {{comment.text}}
                 <button class="btn btn-dark">
                   <a href="{% url 'article:comment_edit' board.id comment.id %}">수정하기</a>
@@ -116,6 +128,7 @@
               {% endif %}
               {% endfor %}
               
+              {% if user.is_authenticated %}
               <div class="card my-4">
                   <div class="comment_form_head">댓글을 남겨보세요!</div>
                   <div class="comment_form_body">
@@ -126,6 +139,7 @@
                       </form>
                   </div>
               </div>
+              {% endif %}
               <div class>
 
               </div>

@@ -1,23 +1,29 @@
 {% extends 'main/base.html' %}
+
+{% block title %}
+자유 게시판
+{% endblock %}
+
 {% block content %}
 
 <div class = "listdiv_list">
     
     
       <div class='search-sec-list'>
+        <p style='font-size:2em;text-align:center;'>자유 게시판 <i class="iconify" data-icon="fa-brands:freebsd""></i> </p>
       <div class='center'>
       <div class="row mt-5">
         <div class="col-12">
           <table class="table">
             <thead class="table-active">
-              <tr style="background-color:#064989;">
+              <tr style="background-color:#6185a7;">
                 <th scope="col" style="width: 100px;">번호 <i class="iconify" data-icon="noto:lollipop"></i></th>
                 <th scope="col">제목 <i class="iconify" data-icon="noto:cat-with-wry-smile"></i></th>
               </tr>
             </thead>
             <tbody>
               {% for free in boards %}
-              <tr onclick="location.href='/free/{{ free.id }}'">
+              <tr style="background-color:#a9bac9;" onclick="location.href='/free/{{ free.id }}'">
                 <td>{{ free.id }}</td>
                 <td>{{ free.title }}</td>
                 
