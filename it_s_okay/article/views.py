@@ -94,24 +94,29 @@ def board_detail(request, board_id):
 
 def board_edit(request, board_id):
     board = get_object_or_404(Article, id=board_id)
-    if request.method == "POST":
-            form = ArticleForm(request.POST, request.FILES)
-            if form.is_valid():
-                print(form.cleaned_data)
-                board.title = form.cleaned_data['title']
-                board.category = form.cleaned_data['category']
-                board.area = form.cleaned_data['area']
-                board.age = form.cleaned_data['age']
-                board.headcount = form.cleaned_data['headcount']
-                board.state = form.cleaned_data['state']
-                board.body = form.cleaned_data['body']
-                board.kakao_url = form.cleaned_data['kakao_url']
+    
 
-                board.save()
-                return redirect('/board/'+str(board.id))
-            
-    else:
-        form = ArticleForm(instance = board)
+    if request.user == board.writer:
+        if request.method == "POST":
+                form = ArticleForm(request.POST, request.FILES)
+                if form.is_valid():
+                    print(form.cleaned_data)
+                    board.title = form.cleaned_data['title']
+                    board.category = form.cleaned_data['category']
+                    board.area = form.cleaned_data['area']
+                    board.age = form.cleaned_data['age']
+                    board.headcount = form.cleaned_data['headcount']
+                    board.state = form.cleaned_data['state']
+                    board.body = form.cleaned_data['body']
+                    board.kakao_url = form.cleaned_data['kakao_url']
+
+                    board.save()
+                    return redirect('/board/'+str(board.id))
+                
+        else:
+            form = ArticleForm(instance = board)
+    
+
 
         return render(request, 'index/board_edit.html',{'form':form})
 
@@ -120,9 +125,10 @@ def board_edit(request, board_id):
 def board_delete(request, board_id):
     board = Article.objects.get(id=board_id)
 
-    if request.method == "POST":
-        board.delete()
-        return redirect('/board/list')   
+    if request.user == board.writer:
+        if request.method == "POST":
+            board.delete()
+            return redirect('/board/list')   
     
     return render(request, 'index/board_delete.html')
 
@@ -178,16 +184,18 @@ def comment_edit(request, board_id, comment_id):
     my_comment = Comment.objects.get(id=comment_id)
     comment_form = CommentForm(instance=my_comment)
 
-    if request.method == "POST":
-        update_comment_form = CommentForm(request.POST, instance=my_comment)
-        if update_comment_form.is_valid():
-            update_comment_form.save()
+    if request.user == my_comment.author:
 
-            # comments = comment_form.save(commit=False)
-            # print(comment_form.cleaned_data)
-            # comments.text = comment_form.cleaned_data['text']
-            # comments.save()
-            return redirect('/board/'+str(board.id))
+        if request.method == "POST":
+            update_comment_form = CommentForm(request.POST, instance=my_comment)
+            if update_comment_form.is_valid():
+                update_comment_form.save()
+
+                # comments = comment_form.save(commit=False)
+                # print(comment_form.cleaned_data)
+                # comments.text = comment_form.cleaned_data['text']
+                # comments.save()
+                return redirect('/board/'+str(board.id))
     # else:
     #     comment_form = CommentForm()
     
@@ -205,13 +213,11 @@ def comment_delete(request, board_id, comment_id):
     board = Article.objects.get(id=board_id)
     comment = Comment.objects.get(id=comment_id)
 
-    if request.user != comment.author :
-        messages.warning(request, '권한없음')
-        return redirect('/board/'+str(board.id))
     
-    if request.method == "POST":
-        comment.delete()
-        return redirect('/board/'+str(board.id))
+    if request.user == comment.author :
+        if request.method == "POST":
+            comment.delete()
+            return redirect('/board/'+str(board.id))
     
     
     context={

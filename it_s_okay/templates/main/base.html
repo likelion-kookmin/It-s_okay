@@ -51,7 +51,8 @@
 
   <div class="wrap_content">
     <!-- 모든 페이지에 공통으로 들어갈 요소 -->
-    <nav style="background: #46669d;padding:0;" class="navbar fixed-top navbar-expand-md navbar-light">
+
+<nav style="background: transparent;padding:0;box-shadow: 4px 4px 4px 4px #1465AA;" class="navbar fixed-top navbar-expand-md navbar-light">
             <ul class='nav navbar-nav w-100 justify-content-start'>
               <li style="width:10%;" class="nav-item">
                 <a class="nav-link active " href="{% url 'main:index' %}"><img style='width:100%;' src="/static/imgs/nav_logo.png" alt="sleep"></a>
@@ -72,7 +73,7 @@
                 {{user.username}} 님 반갑습니다!
               </li>
               <li class="nav-item">
-                <button class="btn btn-dark">
+                <button  class="btn btn-dark">
                   <a href="{% url 'user:logout' %}">로그아웃</a>
                 </button>
               </li>

@@ -195,9 +195,10 @@ padding: 2%;
 margin-top: 5%;
 margin-left: 10%;
 margin-right: 10%;
-background-color: #6783AA;
+/* background-color: #6783AA; */
+background-color:transparent;
 padding: 2%;
-box-shadow: 4px 4px 3px 1px #1465AA;
+box-shadow: 4px 4px 4px 4px #1465AA;
 }
 
 
@@ -209,6 +210,7 @@ height: 100%;
 
 .search-sec{
 padding: 2rem;
+background-color: #3F6489;
 }
 
 .search-sec-list{
@@ -217,6 +219,8 @@ padding: 2rem;
 background-color: #3F6489;
 font-size: 1.2em;
 font-weight: bold;
+/* filter: hue-rotate(120deg);
+animation: animate 10s linear infinite; */
 }
 
 .search-slt{
@@ -312,6 +316,7 @@ width : 20%;
 /* Footer */
 
 .footer-basic {
+position: relative;
 padding:40px 0;
 color:#4b4c4d;
 background-color:#AFC1ED;
