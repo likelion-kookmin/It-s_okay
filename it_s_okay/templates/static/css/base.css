@@ -210,13 +210,13 @@ height: 100%;
 
 .search-sec{
 padding: 2rem;
-background-color: #3F6489;
+background-color: #548CC5;
 }
 
 .search-sec-list{
 margin-top: 3%;
 padding: 2rem;
-background-color: #3F6489;
+background-color: #548CC5;
 font-size: 1.2em;
 font-weight: bold;
 /* filter: hue-rotate(120deg);
@@ -522,7 +522,6 @@ margin-bottom:0;
 .search-sec{
     position: relative;
     
-    background: rgba(26, 70, 104, 0.51);
 }
 }
 

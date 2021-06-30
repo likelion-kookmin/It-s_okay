@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     "user",
     "free.apps.FreeConfig",
     'bootstrap4',
+    'imagekit',
     
 ]
 
@@ -151,6 +152,9 @@ STATIC_URL = "/static/"
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "templates/static"),
 ]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'templates/media')
+MEDIA_URL = '/media/'
 
 
 

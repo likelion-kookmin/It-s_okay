@@ -23,7 +23,8 @@
             </thead>
             <tbody>
               {% for free in boards %}
-              <tr style="background-color:#a9bac9;" onclick="location.href='/free/{{ free.id }}'">
+              <tr style="background-color:#a9bac9;  filter: hue-rotate(120deg);
+              animation: animate 10s linear infinite;" onclick="location.href='/free/{{ free.id }}'">
                 <td>{{ free.id }}</td>
                 <td>{{ free.title }}</td>
                 

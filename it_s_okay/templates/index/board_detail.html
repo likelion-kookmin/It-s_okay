@@ -101,9 +101,14 @@
               <div>
                 <!-- <pre class='fontfont'>{{ board.body }}</pre> -->
                 {{board.body | linebreaksbr}}
+                {% if board.image %}
               </div>
+                <img style="width:10%" src ="{{board.image.url}}" alt = '{{article.image}}'>
+              </div>
+              {% endif %}
+              </div>
+
             <p style="border-style: groove;border-color: #1465AA;border-width: thin;"></p>
-            </div>
             <div class='comment_wrapper'>
               <div style="margin-top:10%;"class='comment_head'>
                 댓글 <i class="iconify" data-icon="akar-icons:comment"></i>
@@ -147,7 +152,6 @@
               </div>
 
               
-              </div>
             
             
           
@@ -162,6 +166,8 @@
           </div>
         </div>
       </div>
+    </div>
+
 
 
 

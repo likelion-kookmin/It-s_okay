@@ -86,7 +86,8 @@
         </thead>
         <tbody>
           {% for board in boards %}
-          <tr style="background-color:#a9bac9;" onclick="location.href='/board/{{ board.id }}/'">
+          <tr style="background-color:#a9bac9;  filter: hue-rotate(120deg);
+          animation: animate 10s linear infinite;" onclick="location.href='/board/{{ board.id }}/'">
             <td>{{ board.title }}</td>
             <td>{{ board.category }}</td>
             <td>{{ board.area }}</td>

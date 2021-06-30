@@ -44,11 +44,13 @@ def board_write(request):
         if form.is_valid():
             article = form.save(commit=False)
             article.writer = request.user
+            if request.POST.get('image',True):
+                article.image = request.FILES['image']
             article.save()
-            print(article.id)
             return redirect('/board/' + str(article.id))
+    else:
+        form = ArticleForm()
         
-    form = ArticleForm()
     return render(request, 'index/board_write.html', {'form' : form})
 
 
@@ -58,7 +60,7 @@ def board_detail(request, board_id):
     comments = Comment.objects.filter(board=board_id)
 
     if request.method == 'POST':
-        comment_form = CommentForm(request.POST)
+        comment_form = CommentForm(request.POST, request.FILES)
         
         if comment_form.is_valid():
             comments = comment_form.save(commit=False)

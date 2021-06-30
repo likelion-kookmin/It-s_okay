@@ -10,7 +10,7 @@ from .models import Article, Comment
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
-        fields = ['title','category','area','age','meeting_date','headcount','state','body','kakao_url'] 
+        fields = ['title','category','area','age','meeting_date','headcount','state','body','kakao_url','image'] 
 
         
     abstract=True
@@ -124,6 +124,11 @@ class ArticleForm(forms.ModelForm):
             'required': '만나기를 희망하는 위치를 입력해주세요.'
         },
         label= "오픈 카톡 url"
+    )
+
+    image = forms.ImageField(
+        label="이미지",
+        required=False
     )
 
 
