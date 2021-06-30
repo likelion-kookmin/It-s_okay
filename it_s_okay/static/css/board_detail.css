@@ -95,6 +95,17 @@
     /* text-align: center; */
 }
 
+.article_date{
+    background-color: rgb(155, 188, 203); 
+    /* padding: 0.5%; */
+    border-radius: 50px;
+    font-size: 0.8em;
+    margin-bottom: 1%;
+    text-align: center;
+    /* margin-bottom: 5%; */
+    /* text-align: center; */
+}
+
 .article_area{
     background-color: #B8CB9D; 
     /* padding: 0.5%; */
@@ -104,6 +115,8 @@
 
     /* text-align: center; */
 }
+
+
 
 .comment_wrapper{
     padding: 2%;
@@ -137,12 +150,12 @@
 }
 
 .comment_form_head{
-    background-color:rgb(172, 158, 144);
+    background-color:rgb(115, 141, 186);
     font-size: 0.7em;
 }
 
 .comment_form_body{
-    background-color:rgb(120, 109, 98);
+    background-color:rgb(112, 135, 174);
     font-size: 0.7em;
     padding: 2%;
 }
