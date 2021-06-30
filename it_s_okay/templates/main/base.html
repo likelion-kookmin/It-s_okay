@@ -30,8 +30,8 @@
         <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 
         <style>
-            body {
-      cursor: none;
+        body {
+        cursor: none;
         }
         </style>
 
@@ -51,57 +51,64 @@
 
   <div class="wrap_content">
     <!-- 모든 페이지에 공통으로 들어갈 요소 -->
-    <nav class="navbar navbar-expand-lg navbar-light style="background-color: #A9C1ED;">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="{% url 'main:index' %}">쿨괜</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
+    <nav style="background: #46669d;padding:0;" class="navbar fixed-top navbar-expand-md navbar-light">
+            <ul class='nav navbar-nav w-100 justify-content-start'>
+              <li style="width:10%;" class="nav-item">
+                <a class="nav-link active " href="{% url 'main:index' %}"><img style='width:100%;' src="/static/imgs/nav_logo.png" alt="sleep"></a>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav w-100 justify-content-center">
               <li class="nav-item">
-                <a class="nav-link active " aria-current="page" href="{% url 'article:board_list' %}">글 목록</a>
+                <a style="color:black;" class="nav-link active " aria-current="page" href="{% url 'article:board_list' %}">팀업 게시판</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">자유 게시판</a>
+                <a style="color: black;" class="nav-link active" href="{% url 'free:free_list' %}">자유 게시판</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">비밀 게시판</a>
-              </li>
+              </ul>
 
-
-                {% if user.is_authenticated %}
-                {{user.username}} 님 환영합니다!
+              {% if user.is_authenticated %}
+              <ul  class="nav navbar-nav  w-100 justify-content-end">
+              <li class="nav-item">
+                {{user.username}} 님 반갑습니다!
+              </li>
+              <li class="nav-item">
                 <button class="btn btn-dark">
                   <a href="{% url 'user:logout' %}">로그아웃</a>
                 </button>
-
-                <div class = "margin-right">                
+              </li>
+              <li class="nav-item">
                 <button class="btn btn-dark">                  
                   <a href="{% url 'user:mypage' %}">마이페이지</a>
-                </button></div>
-
-                {% else %}
-                <li>
-                  <button class="btn btn-dark">
-                    <a href="{% url 'user:register' %}">회원가입</a>
-                  </button>
-                </li>
+                </button>
+              </li>
+              </ul>
+              {% else %}
+              <ul  class="nav navbar-nav  w-100 justify-content-end">
+              <li class="nav-item">
                 <button class="btn btn-dark">
                   <a href="{% url 'user:login' %}">로그인</a>
                 </button>
-                {% endif %}
               </li>
-            </ul>
-          </div>
-        </div>
+              <li class="nav-item">
+                <button class="btn btn-dark">
+                  <a href="{% url 'user:register' %}">회원가입</a>
+                </button>
+              </li>
+              </ul>
+              {% endif %}
       </nav> 
+    </div>
+
 
       
     
     {% block content %} 
     {% endblock %}  
 
+    <a style = 'display:scroll;position:fixed;bottom:10%;right:5%;color:black;' href="#" title='Top'>
+      맨 위로 
+      <span class="iconify" data-icon="carbon:back-to-top" data-inline="false"></span>
+    </a>
 
     <div class="footer-basic">
           <div class="social">LikeLion-Kookmin/it-s_okay<a href="https://github.com/likelion-kookmin/It-s_okay"><i class="icon ion-social-github"></i></a></div>
@@ -112,7 +119,7 @@
             Junyub Kim <a href="https://github.com/jun-yub-kim"><i class="icon ion-social-github"></i></a>
             SeungHwan Lee<a href="https://github.com/sh981013s"><i class="icon ion-social-github"></i></a>
           </div>
-  </div>
+    </div>
 
 </body>
 </html>
