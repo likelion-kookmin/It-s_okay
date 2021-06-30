@@ -1,5 +1,6 @@
 body{
   margin: 0;
+  padding: 0;
   font-family:'BinggraeSamanco'!important;
   font-weight: normal;
   /* font-style: normal;"Comic Sans MS", "Comic Sans" !important; */
@@ -10,8 +11,8 @@ body{
   font-size: 11px;
   line-height: 1.4;
   font-weight: 500;
-  /* height: 100vh;
-  width: 100vw; */
+  height: 100vh;
+  width: 100vw;
   /* 스크롤 제거 */
   /* overflow-x: hidden;
   overflow-y: hidden; */
@@ -414,6 +415,102 @@ margin-bottom:0;
   width: 45%;
   vertical-align: top;
 }
+
+/* Login prototype */
+
+.register1{
+  display: flex;
+  padding-top: 10%;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(-30deg, #03a9f4 0%, #3a78b7 50%, #262626 50%, #607d8b 100%);
+  filter: hue-rotate(120deg);
+  animation: animate 10s linear infinite;
+}
+
+@keyframes animate{
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.box{
+  margin-left: 0%;
+  margin-bottom: 7%;
+  position: relative;
+  padding: 3%;
+  width: 30%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10%;
+  box-shadow: 0 5px 35px rgba(0,0,0,0.2);
+}
+
+/* .box::after{
+  content: '';
+  position: relative;
+  top: 10%;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border-radius: 5px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.3) 0%,
+  rgba(255,255,255,0.1) 15%, transparent 50%, transparent 85%,
+  rgba(255,255,255,0.3) 100%,);
+} */
+
+.box .form{
+  position:relative;
+  width:100%;
+}
+
+.box .form h2{
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin-bottom: 5%;
+}
+
+.box .form .inputBx{
+  position: relative;
+  width: 100%;
+  margin-bottom: 5%;
+}
+
+.box .form .inputBx input{
+  width: 100%;
+  outline: none;
+  border: 0.1em solid rgba(255,255,255,0.2);
+  background: transparent;
+  padding: 1% 10%;
+  /* padding-left: 35px; */
+  border-radius: 1%;
+  color: #fff;
+  font-size: 1em;
+  font-weight: 300;
+  box-shadow: inset 0 0 25px rgba(0,0,0,0.2);
+}
+
+.box .form p{
+  color: #fff;
+}
+
+.box .form .inputBx input::placeholder{
+  color: #fff;
+}
+
+
+
+
+
 
 /* Media */
 @media (min-width: 992px){
