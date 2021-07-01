@@ -28,7 +28,7 @@ def mypost(request):
     pagenator   = Paginator(all_boards, 5)
     boards      = pagenator.get_page(page)
     return render(request, 'free/free_list.html', {"boards" : boards})
- 
+
 
 def free_detail(request, free_id):
     board = get_object_or_404(Free, id=free_id)

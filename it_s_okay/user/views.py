@@ -6,7 +6,6 @@ from django.contrib import auth
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
-#pw 변경을 위해 line 6~8까지 세줄 추가하였습니다.
 
 
 # 회원가입 대안버전
