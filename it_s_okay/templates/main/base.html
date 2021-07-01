@@ -51,7 +51,8 @@
 
   <div class="wrap_content">
     <!-- 모든 페이지에 공통으로 들어갈 요소 -->
-    <nav style="background: #46669d;padding:0;" class="navbar fixed-top navbar-expand-md navbar-light">
+
+<nav style="background: transparent;padding:0;box-shadow: 4px 4px 4px 4px #1465AA;" class="navbar fixed-top navbar-expand-md navbar-light">
             <ul class='nav navbar-nav w-100 justify-content-start'>
               <li style="width:10%;" class="nav-item">
                 <a class="nav-link active " href="{% url 'main:index' %}"><img style='width:100%;' src="/static/imgs/nav_logo.png" alt="sleep"></a>
@@ -68,11 +69,11 @@
 
               {% if user.is_authenticated %}
               <ul  class="nav navbar-nav  w-100 justify-content-end">
-              <li class="nav-item">
+              <li style="color:#1465AA;" class="nav-item">
                 {{user.username}} 님 반갑습니다!
               </li>
               <li class="nav-item">
-                <button class="btn btn-dark">
+                <button  class="btn btn-dark">
                   <a href="{% url 'user:logout' %}">로그아웃</a>
                 </button>
               </li>
@@ -85,19 +86,20 @@
               {% else %}
               <ul  class="nav navbar-nav  w-100 justify-content-end">
               <li class="nav-item">
-                <button class="btn btn-dark">
-                  <a href="{% url 'user:login' %}">로그인</a>
+                <button class="btn btn-primary">
+                  <a style="color:white;" href="{% url 'user:login' %}">로그인</a>
                 </button>
               </li>
               <li class="nav-item">
-                <button class="btn btn-dark">
-                  <a href="{% url 'user:register' %}">회원가입</a>
+                <button class="btn btn-primary">
+                  <a style="color:white;" href="{% url 'user:register' %}">회원가입</a>
                 </button>
               </li>
               </ul>
               {% endif %}
       </nav> 
     </div>
+
 
 
       
@@ -111,14 +113,14 @@
     </a>
 
     <div class="footer-basic">
-          <div class="social">LikeLion-Kookmin/it-s_okay<a href="https://github.com/likelion-kookmin/It-s_okay"><i class="icon ion-social-github"></i></a></div>
-          <div class="social"><b>Contributors : </b><br>
-            Kijung Lee<a href="https://github.com/kkIIun"><i class="icon ion-social-github"></i></a>
-            Seyeon Jang<a href="https://github.com/Seyom"><i class="icon ion-social-github"></i></a>
-            Soye Kwon <a href="https://github.com/soyekwon"><i class="icon ion-social-github"></i></a>
-            Junyub Kim <a href="https://github.com/jun-yub-kim"><i class="icon ion-social-github"></i></a>
-            SeungHwan Lee<a href="https://github.com/sh981013s"><i class="icon ion-social-github"></i></a>
-          </div>
+      <div class="social">LikeLion-Kookmin/it-s_okay<a href="https://github.com/likelion-kookmin/It-s_okay"><i class="icon ion-social-github"></i></a></div>
+      <div class="social"><b>Contributors : </b><br>
+        Kijung Lee<a href="https://github.com/kkIIun"><i class="icon ion-social-github"></i></a>
+        Seyeon Jang<a href="https://github.com/Seyom"><i class="icon ion-social-github"></i></a>
+        Soye Kwon <a href="https://github.com/soyekwon"><i class="icon ion-social-github"></i></a>
+        Junyub Kim <a href="https://github.com/jun-yub-kim"><i class="icon ion-social-github"></i></a>
+        SeungHwan Lee<a href="https://github.com/sh981013s"><i class="icon ion-social-github"></i></a>
+      </div>
     </div>
 
 </body>

@@ -7,7 +7,7 @@ For more information on this file, see
 https://docs.djangoproject.com/en/3.0/topics/settings/
 
 For the full list of settings and their values, see
-https://docs.djangoproject.com/en/3.0/ref/settings/
+https://docs.djangoproject.com/en/3.0/ref/settings/- 
 """
 
 import os
@@ -61,14 +61,15 @@ INSTALLED_APPS = [
     "category",
     "user",
     "free.apps.FreeConfig",
-    "bootstrap4",
+    'bootstrap4',
+    'imagekit',
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
+    # "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -151,4 +152,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "templates/static"),
 ]
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'templates/media')
+MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+

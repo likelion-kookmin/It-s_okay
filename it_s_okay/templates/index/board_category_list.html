@@ -9,7 +9,7 @@
 
 <div class = "listdiv_list">
 <div class = "list-inside">
-<section class="search-sec">
+<!-- <section class="search-sec"> -->
   <div class="container">
       <form action="{% url 'article:category_list' %}" method="POST" novalidate="novalidate" id="category_list1">
         {% csrf_token %}
@@ -55,13 +55,20 @@
               </select>
             </div>
             <div class="a">
-              <input type="submit" value="찾기" class="btn btn-danger wrn-btn"></input>
+              <input style="background: rgba(255,255,255,0.5);
+              box-shadow: 0px 15px 35px rgba(255,255,255,0.05);
+              border-radius: 5%;
+              backdrop-filter: blur(10px);
+              border: 1px solid rgba(255,255,255,0.25);
+              border-top: 1px solid rgba(255,255,255,0.5);
+              border-left: 1px solid rgba(255,255,255,0.5);
+              color: black;"type="submit" value="찾기" class="btn btn-danger wrn-btn"></input>
             </div>
           </div>
         </div>
       </form>
   </div>
-</section>
+<!-- </section> -->
 
 
 
@@ -76,7 +83,7 @@
     <div class="col-12">
       <table class="table">
         <thead class="table-active">
-          <tr style="background-color:#6185a7;">
+          <tr style="background-color:#DCE1F6;">
             <th scope="col">제목 <i class="iconify" data-icon="noto:cat-with-wry-smile""></i></th>
             <th scope="col">활동 <i class="iconify" data-icon="noto:lollipop"></i></th>
             <th scope="col">위치 <i class="iconify" data-icon="openmoji:location-indicator-red"></i></th>

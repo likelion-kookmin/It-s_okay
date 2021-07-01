@@ -3,6 +3,8 @@ from django.utils import timezone
 from category.models import Large_category, Medium_category, Small_category
 from django.contrib.auth import get_user_model
 from user.models import *
+from imagekit.models import ProcessedImageField
+from imagekit.processors import Thumbnail
 
 
 class Article(models.Model): 
@@ -22,6 +24,7 @@ class Article(models.Model):
     # small_category = models.ForeignKey(Small_category, on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    image = models.ImageField(upload_to='media/images/', blank=True, null=True)
 
 
     def __str__(self) -> str:
@@ -31,7 +34,7 @@ class Article(models.Model):
         db_table = 'cool_board'
         verbose_name = '쿨괜 게시판'
         verbose_name_plural = '쿨괜 게시판'
-    
+
 
 
 class Comment(models.Model):

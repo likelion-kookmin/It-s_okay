@@ -1,54 +1,37 @@
 {% extends 'main/base.html' %}
 {% block content %}
 
-<div style="margin-top: 10%;">
-<div class="container h-100">
-    <div class="d-flex justify-content-center h-100">
-        <div class="user_card">
-            <div class="d-flex justify-content-center">
-                <div class="brand_logo_container">
-                    <img src="https://media.vlpt.us/images/sh981013s/post/b89e7635-ad4c-4211-8e81-8cca2c9abb33/image.png" class="brand_logo" alt="Logo">
-                   
+<section class='register1'>
+    <div class='box'>
+        <div class='form'>
+            <h2>로그인</h2>
+            <form method="POST" action=".">
+                {% csrf_token %}
+                <div class='inputBx'>
+                    <input type='text' name='username'id='username' placeholder='아이디'>
+                    <i style="position:absolute;top:15px;left:10px;" class="iconify" data-icon="bi:person-fill"></i>
                 </div>
-            </div>
-            <div class="d-flex justify-content-center form_container">
-                <form method="POST" action=".">
-                    {% csrf_token %}
-                    <div class="input-group mb-3">
-                        <div class="input-group-append">
-                            <span class="input-group-text"><i class="fas fa-user"></i></span>
-                        </div>
-                        <input type="text" name="username" class="form-control" value="" id="username" placeholder="사용자 아이디">
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-append">
-                            <span class="input-group-text"><i class="fas fa-key"></i></span>
-                        </div>
-                        <input type="password" name="password" class="form-control" value="" id="password" placeholder="비밀번호">
-                    </div>
-                    <div class = "row mt-5">
-                        <div class="col-12">
-                            {{ error }}
-                        </div>
-                    </div>
-                        <div class="d-flex justify-content-center mt-3 login_container">
-                    <button type="submit" class="btn login_btn">로그인</button>
-                        </div>
-                </form>
-            </div>
-            <div class="mt-4">
-                <div class="d-flex justify-content-center links">
-                    아이디가 없으신가요? <a href="{% url 'user:register' %}" class="ml-2">회원가입</a>
+                <div class='inputBx'>
+                    <input type='password' name='password' id='password' placeholder='비밀번호'>
+                    <i style="position:absolute;top:15px;left:10px;" class="iconify" data-icon="ri:lock-password-fill"></i>
                 </div>
-
-            </div>
-            </div>
+                <div class="row mt-5">
+                    <div style="color:white;" class="col-12">
+                        {{error}}
+                    </div>
+                </div>
+                <div class='inputBx'>
+                    <input type="submit" style="background-color:white;color:#111;font-weight: 1em;"type='submit' value="로그인">
+                </div>
+                <div class="mt-4">
+                    <div class="d-flex justify-content-center links">
+                        아이디가 없으신가요? <a style="color:black;"href="{% url 'user:register' %}" class="ml-2">회원가입</a>
+                    </div>
     
-
+                </div>
+            </form>
         </div>
     </div>
-</div>
-
-
+</section>
 
 {% endblock %}
