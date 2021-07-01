@@ -1,0 +1,210 @@
+
+.ArticleContentBox{
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: #6783AA;
+    border-radius: 6px;
+    padding: 2%;
+    border: 1px solid var(--skinLayoutBorder);
+    box-shadow: 4px 4px 3px 1px #1465AA;
+
+}
+
+.article_header{
+    position: relative;
+    /* margin-bottom: 2%;
+    padding-bottom: 20px; */
+    border-bottom: 1px solid var(--skinLayoutBorder);
+    font-weight: bolder;
+    font-size: 2em;
+    text-align: center;
+}
+
+.article_title{
+    font-weight: bold;
+    
+}
+
+.article_container{
+    font-size: 2em;
+}
+
+.iconsection{
+    height: 2%;
+    padding: 2%;
+    margin-bottom: 3%;
+}
+
+.iconbox-category{
+    font-size: 0.5em;
+    float: left;
+    height: 3%;
+    width: 10%;
+    margin-right: 2%;
+    background-color: #7467AA;
+    padding: 1%;
+    border-radius: 50px;
+
+}
+
+.iconbox-age{
+    font-size: 0.5em;
+    float: left;
+    height: 3%;
+    width: 10%;
+    margin-right: 2%;
+    background-color: #67AAA8;
+    padding: 1%;
+    border-radius: 50px;
+
+}
+
+.iconbox-state{
+    font-size: 0.5em;
+    float: left;
+    height: 3%;
+    width: 10%;
+    margin-right: 2%;
+    background-color: #9F75A2;
+    padding: 1%;
+    border-radius: 50px;
+
+}
+
+.iconbox-headcount{
+    font-size: 0.5em;
+    float: left;
+    height: 3%;
+    width: 12%;
+    margin-right: 2%;
+    background-color: #d6b6d8b1;
+    padding: 1%;
+    border-radius: 50px;
+}
+
+
+.article_kakao{
+    background-color: #AA9B67; 
+    /* padding: 0.5%; */
+    border-radius: 50px;
+    font-size: 0.8em;
+    margin-bottom: 1%;
+    text-align: center;
+    /* margin-bottom: 5%; */
+    /* text-align: center; */
+}
+
+.article_date{
+    background-color: rgb(155, 188, 203); 
+    /* padding: 0.5%; */
+    border-radius: 50px;
+    font-size: 0.8em;
+    margin-bottom: 1%;
+    text-align: center;
+    /* margin-bottom: 5%; */
+    /* text-align: center; */
+}
+
+.article_area{
+    background-color: #B8CB9D; 
+    /* padding: 0.5%; */
+    border-radius: 50px;
+    font-size: 0.8em;
+    margin-bottom: 1%;
+
+    /* text-align: center; */
+}
+
+
+
+.comment_wrapper{
+    padding: 2%;
+
+}
+
+.comment_head{
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    height: 3%;
+    width: 10%;
+    margin-right: 2%;
+    background-color: #6f77d0;
+    padding: 1%;
+    border-radius: 50px;
+}
+
+.comment_box{
+    font-size: 0.7em;
+}
+
+.comment_text{
+    float: left;
+    width: 50%;
+}
+
+.comment_button_box{
+    width: 30%;
+    float: left;
+}
+
+.comment_form_head{
+    background-color:rgb(115, 141, 186);
+    font-size: 0.7em;
+}
+
+.comment_form_body{
+    background-color:rgb(112, 135, 174);
+    font-size: 0.7em;
+    padding: 2%;
+}
+
+#cate_text{
+    text-align:left;
+}
+
+#area_main{
+    float: left;
+    width: 23%;
+    font-weight: bold;
+    text-align: center;
+    background-color: #A6CA6B;
+    border-radius: 50px;
+}
+
+#url_main{
+    float: left;
+    width: 23%;
+    font-weight: bold;
+    text-align: center;
+    background-color: #A98F2C;
+    border-radius: 50px;
+}
+
+#icon-onlinestudy{
+    font-size: 0.5em;
+    float: left;
+    height: 3%;
+    width: 15%;
+    margin-right: 2%;
+    background-color: #7467AA;
+    padding: 1%;
+    border-radius: 50px;
+
+}
+
+#icon-50{
+    font-size: 0.5em;
+    float: left;
+    height: 3%;
+    width: 15%;
+    margin-right: 2%;
+    background-color: #67AAA8;
+    padding: 1%;
+    border-radius: 50px;
+}
+
+.fontfont{
+    font-family:BinggraeSamanco;
+}

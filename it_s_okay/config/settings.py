@@ -44,7 +44,10 @@ SECRET_KEY = get_secret("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+
+
+ALLOWED_HOSTS = ["*"]
+
 
 
 # Application definition
@@ -65,6 +68,7 @@ INSTALLED_APPS = [
     'imagekit',
     'corsheaders',
     
+
 ]
 
 MIDDLEWARE = [
@@ -182,4 +186,7 @@ CORS_ALLOW_HEADERS = (
     'x-csrftoken',
     'x-requested-with',
 )
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
 
