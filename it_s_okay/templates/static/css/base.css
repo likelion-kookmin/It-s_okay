@@ -195,10 +195,19 @@ padding: 2%;
 margin-top: 5%;
 margin-left: 10%;
 margin-right: 10%;
-/* background-color: #6783AA; */
 background-color:transparent;
-padding: 2%;
 box-shadow: 4px 4px 4px 4px #1465AA;
+
+padding: 2%;
+
+/* background: rgba(255,255,255,0.5); */
+/* box-shadow: 0px 15px 35px rgba(255,255,255,0.05); */
+border-radius: 5%;
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255,255,255,0.25);
+border-top: 1px solid rgba(255,255,255,0.5);
+border-left: 1px solid rgba(255,255,255,0.5);
+
 }
 
 
@@ -216,11 +225,18 @@ background-color: #548CC5;
 .search-sec-list{
 margin-top: 3%;
 padding: 2rem;
-background-color: #548CC5;
+background-color: transparent;
 font-size: 1.2em;
 font-weight: bold;
-/* filter: hue-rotate(120deg);
-animation: animate 10s linear infinite; */
+
+
+/* background: rgba(255,255,255,0.5); */
+box-shadow: 0px 15px 35px rgba(255,255,255,0.05);
+border-radius: 5%;
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255,255,255,0.25);
+border-top: 1px solid rgba(255,255,255,0.5);
+border-left: 1px solid rgba(255,255,255,0.5);
 }
 
 .search-slt{
