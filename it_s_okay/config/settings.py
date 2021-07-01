@@ -44,7 +44,7 @@ SECRET_KEY = get_secret("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -63,7 +63,6 @@ INSTALLED_APPS = [
     "free.apps.FreeConfig",
     'bootstrap4',
     'imagekit',
-    
 ]
 
 MIDDLEWARE = [
@@ -155,6 +154,5 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'templates/media')
 MEDIA_URL = '/media/'
-
-
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
