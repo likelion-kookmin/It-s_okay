@@ -111,6 +111,8 @@ def board_edit(request, board_id):
                     board.state = form.cleaned_data['state']
                     board.body = form.cleaned_data['body']
                     board.kakao_url = form.cleaned_data['kakao_url']
+                    if request.POST.get('image',True):
+                        board.image = request.FILES['image']
 
                     board.save()
                     return redirect('/board/'+str(board.id))

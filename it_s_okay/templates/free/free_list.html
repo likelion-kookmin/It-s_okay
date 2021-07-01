@@ -17,7 +17,6 @@
           <table class="table">
             <thead class="table-active">
               <tr style="background-color:#DCE1F6;">
-                <th scope="col" style="width: 100px;">번호 <i class="iconify" data-icon="noto:lollipop"></i></th>
                 <th scope="col">제목 <i class="iconify" data-icon="noto:cat-with-wry-smile"></i></th>
               </tr>
             </thead>
@@ -25,7 +24,6 @@
               {% for free in boards %}
               <tr style="background-color:#a9bac9;  filter: hue-rotate(120deg);
               animation: animate 10s linear infinite;" onclick="location.href='/free/{{ free.id }}'">
-                <td>{{ free.id }}</td>
                 <td>{{ free.title }}</td>
                 
               </tr>

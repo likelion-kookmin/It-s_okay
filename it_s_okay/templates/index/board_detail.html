@@ -103,7 +103,9 @@
               box-shadow: 1px 1px 1px 1px #1465AA;"> 
                 {{board.body | linebreaksbr}}
                 {% if board.image %}
-                <img style="width:10%" src ="{{board.image.url}}" alt = '{{article.image}}'>
+                <div>
+                <img style="width:20%" src ="{{board.image.url}}" alt = '{{article.image}}'>
+                </div>
                 {% endif %}
 
               </div>
