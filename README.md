@@ -3,6 +3,10 @@
 it's_okay is a website using Django which matches people who are willing to enjoy outdoor and indoor activities with others <br>
 Just only ___'ONCE'___
 
-### Purpose Ex)
+## How to install all the libraries all together easily with using requirements.txt 
 
-activity, culture, offline, online etc..
+requirements.txt는 is a file which ca be usesd to share all the installed ___pip libraries___
+
+- to install all the libraries stated in requirements.txt just type `pip install -r requirements.txt` 
+
+
