@@ -1,6 +1,7 @@
 ## Description
 
-it's_okay is a website using Django that matches people with the same purpose
+it's_okay is a website using Django which matches people who are willing to enjoy outdoor and indoor activities with others <br>
+Just only ___'ONCE'___
 
 ### Purpose Ex)
 
