@@ -9,6 +9,8 @@
 {% load static %}
 
 <div class = "listdiv_list">
+<p style='font-size:2em;text-align:center;margin-bottom:2%;'>팀업(Team-up) 게시판 <i class="iconify" data-icon="ri:team-fill""></i> </p>
+
 <div class = "list-inside">
 <section class="sea rch-sec">
   <div class="container">
@@ -76,8 +78,11 @@
 
 
   <div class='search-sec-list'>
-    <p style='font-size:2em;text-align:center;'>팀업(Team-up) 게시판 <i class="iconify" data-icon="ri:team-fill""></i> </p>
-  <div class='center'>
+    {% if res_data %}
+    <p style='font-size:1.5em;text-align:center;'>'{{res_data.username}}' 님이 작성한 글 </p>
+    {% endif %}
+
+    <div class='center'>
   <div class="row mt-5">
     <div class="col-12">
       <table class="table">
@@ -85,8 +90,6 @@
           <tr style="background-color:#DCE1F6;">
             <th scope="col">제목 <i class="iconify" data-icon="noto:cat-with-wry-smile""></i></th>
             <th scope="col">활동 <i class="iconify" data-icon="noto:lollipop"></i></th>
-            <th scope="col">위치 <i class="iconify" data-icon="openmoji:location-indicator-red"></i></th>
-            <th scope="col">연령대 <i class="iconify" data-icon="emojione:face-blowing-a-kiss"></i></th>
             <th scope="col">모집인원 <i class="iconify" data-icon="openmoji:love-you-gesture"></i></th>
             <th scope="col">모집상태 <i class="iconify" data-icon="emojione:four-leaf-clover"></i></th>
           </tr>
@@ -97,8 +100,6 @@
           animation: animate 10s linear infinite;" onclick="location.href='/board/{{ board.id }}/'">
             <td>{{ board.title }}</td>
             <td>{{ board.category }}</td>
-            <td>{{ board.area }}</td>
-            <td>{{ board.age }}</td>
             <td>{{ board.headcount }}</td>
             <td>{{ board.state }}</td>
           </tr>

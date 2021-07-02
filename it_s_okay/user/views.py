@@ -8,22 +8,7 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 
 
-# 회원가입 대안버전
-
-# @csrf_exempt 
-# def register(request):
-#     if request.method == "POST":
-#         if request.POST["password"] == request.POST["re_password"]:
-#             normaluser = Normaluser.objects.create_user(
-#                 username=request.POST["username"],password=request.POST["password"]
-#             )
-#             auth.login(request, normaluser)
-#             return redirect('user/login.html')
-#         return render(request, 'user/register.html')
-#     return render(request, 'user/register.html')
-
-
-#회원가입 초기버전 
+#회원가입  
 
 @csrf_exempt 
 def register(request):
@@ -52,7 +37,7 @@ def register(request):
 
     return render(request, 'user/register.html', res_data)
 
-# # 로그인 대안버전
+# 로그인 
 
 @csrf_exempt 
 def login(request):
@@ -70,29 +55,7 @@ def login(request):
     else:
         return render(request, 'user/login.html')
 
-# 로그인 초기버전
-
-# @csrf_exempt 
-# def login(request):
-#     if request.method == 'GET':
-#         return render(request, 'user/login.html')
-#     elif request.method == 'POST':
-#         username = request.POST.get('username', None)
-#         password = request.POST.get('password', None)
-
-#         res_data = {}
-#         if not(username and password):
-#             res_data['error'] = '모든 값을 입력해야합니다.'
-#         else:
-#             normaluser = Normaluser.objects.get(username=username)
-#             if check_password(password, normaluser.password):
-#                 request.session['user'] = normaluser.id
-#                 return redirect('/')
-
-#             else:
-#                 res_data['error'] = '비밀번호를 틀렸습니다.'
-        
-#         return render(request, 'user/login.html', res_data)
+# 로그아웃 
 
 def logout(request):
     if request.session.get('user'):
@@ -107,7 +70,8 @@ def logout(request):
 def mypage(request):
     return render(request, "user/mypage.html")
 
-# 비밀번호 변경 구현을 위한 코드
+# 비밀번호 변경 
+
 def change_pw(request):
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
@@ -120,18 +84,19 @@ def change_pw(request):
             messages.error(request, 'Please correct the error below.')
     else:
         form = PasswordChangeForm(request.user)
+        
     return render(request, 'user/change_pw.html', {
         'form': form
     })
 
-# 회원 탈퇴를 위한 코드
+# 회원 탈퇴
+
 def userDelete(request):
     user = request.user
     user.delete()
     logout(request)
     context = {}
     return render(request, 'user/farewell.html', context)
-
 
 
 def signout(request):
