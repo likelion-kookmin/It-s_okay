@@ -28,11 +28,19 @@ def board_list(request):
 
 def mypost(request):
     all_board = Article.objects.all().order_by('-id')
+    res_data = {}
     all_boards = all_board.filter(writer=request.user.id)
+    res_data['username'] = request.user
+    print(request.user)
     page        = int(request.GET.get('p', 1))
     pagenator   = Paginator(all_boards, 5)
     boards      = pagenator.get_page(page)
-    return render(request, 'index/board_list.html', {"boards" : boards})
+
+    context={
+        'boards' : boards,
+        'res_data' : res_data,
+    }
+    return render(request, 'index/board_list.html', context)
 
 
 
@@ -174,12 +182,7 @@ def category_list(request):
 
     return render(request, 'index/board_category_list.html', context)
 
-# def board_list(request):
-#     all_boards = Article.objects.all().order_by('-id')
-#     page        = int(request.GET.get('p', 1))
-#     pagenator   = Paginator(all_boards, 5)
-#     boards      = pagenator.get_page(page)
-#     return render(request, 'index/board_list.html', {"boards" : boards})
+
 # 댓글 수정
 
 def comment_edit(request, board_id, comment_id):
