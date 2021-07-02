@@ -5,7 +5,7 @@ Just only ___'ONCE'___
 
 ## How to install all the libraries altogether easily with using requirements.txt 
 
-requirements.txt는 is a file which ca be usesd to share all the installed ___pip libraries___
+requirements.txt is a file which can be usesd to share all the installed ___pip libraries___ in specific project.
 
 - to install all the libraries stated in requirements.txt just type `pip install -r requirements.txt` 
 
