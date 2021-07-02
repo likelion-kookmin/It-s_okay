@@ -7,10 +7,13 @@
 {% block content %}
 
 <div class = "listdiv_list">
+  <p style='font-size:2em;text-align:center;'>자유 게시판 <i class="iconify" data-icon="fa-brands:freebsd""></i> </p>
     
     
       <div class='search-sec-list'>
-        <p style='font-size:2em;text-align:center;'>자유 게시판 <i class="iconify" data-icon="fa-brands:freebsd""></i> </p>
+        {% if res_data %}
+        <p style='font-size:1.5em;text-align:center;'>'{{res_data.username}}' 님이 작성한 글 </p>
+        {% endif %}
       <div class='center'>
       <div class="row mt-5">
         <div class="col-12">

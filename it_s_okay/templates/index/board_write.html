@@ -5,23 +5,24 @@
 {% endblock %}
 
 {% block content %}
-{% load bootstrap4 %}
 
-<!-- <div class="listdiv">
-	<div class="list-inside">
-		<form method="POST" action={% url 'article:board_write' %} enctype="multipart/form-data">
-			<input type='date'>
-	</div>
-</div> -->
-
-
-
-<div class="listdiv">
-	<div class="list-inside">
+<div style="width:50%;margin-left:25%;"class="listdiv_list">
+	<div style="font-size:1.3em;align-items: center;" class="list-inside">
+		<p style="text-align:center;font-weight: bold;font-size:2em;">팀업 모집 글쓰기 <i class="iconify" data-icon="ri:team-fill""></i></p>
 		<form method="POST" enctype="multipart/form-data">
 			{% csrf_token %}
-			{% bootstrap_form form %}
-			<input class="btn btn-dark" type="submit" value="발행하기">
+			<p>제목 : {{form.title }} </p>
+			<p>활동 : {{form.category}}</p>
+			<p>팀업 희망 위치 : {{form.area}}</p>
+			<p>팀업 희망 연령대 : {{form.age}}</p>
+			<p>팀업 희망 날짜 : {{form.meeting_date}}</p>
+			<p>팀업 모집 인원(명) : {{form.headcount}}</p>
+			<p>팀업 모집 상태 : {{form.state}}</p>
+			<p>팀업 kakao ID / 오픈채팅 URL : {{form.kakao_url}}</p>
+			<p>본문 : {{form.body}}</p>
+			<p>이미지(선택) : {{form.image}}</p>
+
+			<input class="btn btn-dark" type="submit" value="작성 완료">
 		</form>
 
     </div>

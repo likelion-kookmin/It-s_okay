@@ -9,14 +9,15 @@
 
 
 
-{% load bootstrap4 %}
-
-<div class="listdiv">
-	<div class="list-inside">
-		<form method="POST">
+<div style="width:50%;margin-left:25%;"class="listdiv_list">
+	<div style="font-size:1.3em;align-items: center;" class="list-inside">
+		<p style="text-align:center;font-weight: bold;font-size:2em;">자유 게시판 글쓰기 <i class="iconify" data-icon="fa-brands:freebsd""></i></p>
+		<form method="POST" enctype="multipart/form-data">
 			{% csrf_token %}
-			{% bootstrap_form form %}
-			<input class="btn btn-dark" type="submit" value="발행하기">
+			<p>제목 : {{form.title }} </p>
+			<p>본문 : {{form.content}}</p>
+
+			<input class="btn btn-dark" type="submit" value="작성 완료">
 		</form>
 
     </div>
