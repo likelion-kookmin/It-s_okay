@@ -23,11 +23,19 @@ def free_list(request):
 
 def mypost(request):
     all_board = Free.objects.all().order_by('-id')
+    res_data = {}
     all_boards = all_board.filter(writer=request.user.id)
+    res_data['username'] = request.user
     page        = int(request.GET.get('p', 1))
     pagenator   = Paginator(all_boards, 5)
     boards      = pagenator.get_page(page)
-    return render(request, 'free/free_list.html', {"boards" : boards})
+
+    context={
+        'boards':boards,
+        'res_data':res_data,
+    }
+    
+    return render(request, 'free/free_list.html', context)
 
 
 def free_detail(request, free_id):

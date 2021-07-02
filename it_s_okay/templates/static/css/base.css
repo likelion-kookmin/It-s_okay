@@ -53,9 +53,9 @@ padding: 0;
 
 
 .text-area{
-    margin-top: 10%;
+    margin-top: 5%;
     /* margin-left: 10%; */
-    /* margin-bottom: 10%; */
+    margin-bottom: 15%;
     background: #a6c1ee;
 
 }
@@ -102,11 +102,11 @@ padding: 0;
 
 .logo_gifbox{
   /* display: inline-block; */
-  margin-left: 37%;
+  margin-left: 34%;
 }
 
 .logo_gif{
-  width: 40%;
+  width: 55%;
 }
 
 h1 {
